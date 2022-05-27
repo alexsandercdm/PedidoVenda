@@ -117,173 +117,200 @@ class _PedidosWidgetState extends State<PedidosWidget> {
                       itemBuilder: (context, listViewIndex) {
                         final listViewPedidosRecord =
                             listViewPedidosRecordList[listViewIndex];
-                        return Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 12,
-                                color: Color(0x34000000),
-                                offset: Offset(-2, 5),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width: 4,
-                                  height: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFF4B39EF),
-                                    borderRadius: BorderRadius.circular(4),
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(9, 9, 9, 9),
+                          child: InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OrderItemWidget(
+                                    recordPedido: listViewPedidosRecord,
                                   ),
                                 ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          listViewPedidosRecord.typeDcument,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF4B39EF),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'zqp1dh4v' /* Estimated Pickup TIme */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF57636C),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
-                                          child: Text(
-                                            dateTimeFormat(
-                                                'Hm',
-                                                listViewPedidosRecord
-                                                    .dateMovement),
-                                            style: FlutterFlowTheme.of(context)
-                                                .title1
-                                                .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: Color(0xFF090F13),
-                                                  fontSize: 24,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12, 0, 0, 0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'j4f0ly6n' /* Order Summary */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF57636C),
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.normal,
-                                            ),
+                              );
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 120,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 12,
+                                    color: Color(0x34000000),
+                                    offset: Offset(-2, 5),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 8, 12, 8),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: 4,
+                                      height: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF4B39EF),
+                                        borderRadius: BorderRadius.circular(4),
                                       ),
-                                      Padding(
+                                    ),
+                                    Expanded(
+                                      child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 12, 0, 8),
-                                        child: Row(
+                                            12, 0, 0, 0),
+                                        child: Column(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.end,
+                                              CrossAxisAlignment.start,
                                           children: [
+                                            Text(
+                                              listViewPedidosRecord.typeDcument,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF4B39EF),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'zqp1dh4v' /* Estimated Pickup TIme */,
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Lexend Deca',
+                                                    color: Color(0xFF57636C),
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                            ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0, 4, 0, 0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'vzrgm1a2' /* (4 items) */,
-                                                ),
+                                                dateTimeFormat(
+                                                    'Hm',
+                                                    listViewPedidosRecord
+                                                        .dateMovement),
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .title1
                                                     .override(
                                                       fontFamily: 'Lexend Deca',
-                                                      color: Color(0xFF57636C),
-                                                      fontSize: 14,
+                                                      color: Color(0xFF090F13),
+                                                      fontSize: 24,
                                                       fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(4, 4, 0, 0),
-                                              child: Text(
-                                                formatNumber(
-                                                  listViewPedidosRecord
-                                                      .saleTotal,
-                                                  formatType:
-                                                      FormatType.decimal,
-                                                  decimalType:
-                                                      DecimalType.commaDecimal,
-                                                  currency: 'R\$ ',
-                                                ),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .title3
-                                                    .override(
-                                                      fontFamily: 'Lexend Deca',
-                                                      color: Color(0xFF1D2429),
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.w500,
+                                                          FontWeight.w600,
                                                     ),
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12, 0, 0, 0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'j4f0ly6n' /* Order Summary */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Lexend Deca',
+                                                  color: Color(0xFF57636C),
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 12, 0, 8),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 4, 0, 0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'vzrgm1a2' /* (4 items) */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(4, 4, 0, 0),
+                                                  child: Text(
+                                                    formatNumber(
+                                                      listViewPedidosRecord
+                                                          .saleTotal,
+                                                      formatType:
+                                                          FormatType.decimal,
+                                                      decimalType: DecimalType
+                                                          .commaDecimal,
+                                                      currency: 'R\$ ',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .title3
+                                                        .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color:
+                                                              Color(0xFF1D2429),
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         );

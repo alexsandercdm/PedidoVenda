@@ -22,6 +22,28 @@ double calValorLiquido(
   double precoLiquido,
   double desconto,
 ) {
-  var vLiquido = precoLiquido * (1.0 - desconto);
+  var vLiquido = precoLiquido - desconto;
+
   return vLiquido;
+}
+
+double descontoLiquido(
+  double precoTabela,
+  double descontoAplicado,
+) {
+  double porcentagem;
+  double calcDesconto;
+
+  if (descontoAplicado <= 100) {
+    porcentagem = descontoAplicado / 100;
+    calcDesconto = precoTabela * porcentagem;
+  } else {
+    calcDesconto = 0;
+  }
+  return calcDesconto;
+}
+
+String maskPrecoLiquido(double precoLiquido) {
+  NumberFormat formatter = NumberFormat.simpleCurrency(locale: 'pt_BR');
+  return formatter.format(precoLiquido);
 }

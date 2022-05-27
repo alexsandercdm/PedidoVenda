@@ -1,13 +1,16 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/adicionar_podutos_widget.dart';
 import '../components/list_products_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../produtos_order/produtos_order_widget.dart';
+import '../custom_code/actions/index.dart' as actions;
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -697,6 +700,12 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                       textFieldSearchController,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
+                                                    labelText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'una1r86m' /* refrigerante, coca-cola, pizza... */,
+                                                    ),
                                                     labelStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .bodyText1
@@ -833,6 +842,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         return ListProductsWidget(
                                           pedidoCollection:
                                               widget.recordPedido.reference,
+                                          order: widget.recordPedido,
                                         );
                                       }
                                       return ListView.builder(
@@ -844,19 +854,33 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                               product[productIndex];
                                           return InkWell(
                                             onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                  type: PageTransitionType
-                                                      .rightToLeft,
-                                                  duration: Duration(
-                                                      milliseconds: 200),
-                                                  reverseDuration: Duration(
-                                                      milliseconds: 200),
-                                                  child: ProdutosOrderWidget(
-                                                    produto: productItem,
-                                                  ),
-                                                ),
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return Padding(
+                                                    padding:
+                                                        MediaQuery.of(context)
+                                                            .viewInsets,
+                                                    child:
+                                                        AdicionarPodutosWidget(
+                                                      produto: productItem,
+                                                      order:
+                                                          widget.recordPedido,
+                                                      unity: productItem.unit,
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                              setState(
+                                                  () => FFAppState().qtd = 1);
+                                              setState(() =>
+                                                  FFAppState().desconto = 0.0);
+                                              await actions.calcDesconto(
+                                                FFAppState().desconto,
+                                                productItem.salePrice,
                                               );
                                             },
                                             child: Container(
@@ -1054,127 +1078,143 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                               ],
                             ),
                           ),
-                          StreamBuilder<List<PedidoItemsRecord>>(
-                            stream: queryPedidoItemsRecord(
-                              queryBuilder: (pedidoItemsRecord) =>
-                                  pedidoItemsRecord.where('id_order',
-                                      isEqualTo: widget.recordPedido.reference),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50,
-                                    height: 50,
-                                    child: SpinKitRipple(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
-                                      size: 50,
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                            child: StreamBuilder<List<PedidoItemsRecord>>(
+                              stream: queryPedidoItemsRecord(
+                                queryBuilder: (pedidoItemsRecord) =>
+                                    pedidoItemsRecord.where('id_order',
+                                        isEqualTo:
+                                            widget.recordPedido.reference),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: SpinKitRipple(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
+                                        size: 50,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              }
-                              List<PedidoItemsRecord>
-                                  listViewFiltrosPedidoItemsRecordList =
-                                  snapshot.data;
-                              if (listViewFiltrosPedidoItemsRecordList
-                                  .isEmpty) {
-                                return ListProductsWidget(
-                                  pedidoCollection:
-                                      widget.recordPedido.reference,
-                                );
-                              }
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                scrollDirection: Axis.vertical,
-                                itemCount:
-                                    listViewFiltrosPedidoItemsRecordList.length,
-                                itemBuilder: (context, listViewFiltrosIndex) {
-                                  final listViewFiltrosPedidoItemsRecord =
-                                      listViewFiltrosPedidoItemsRecordList[
-                                          listViewFiltrosIndex];
-                                  return StreamBuilder<ProdutoRecord>(
-                                    stream: ProdutoRecord.getDocument(
-                                        listViewFiltrosPedidoItemsRecord
-                                            .product),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50,
-                                            height: 50,
-                                            child: SpinKitRipple(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                                  );
+                                }
+                                List<PedidoItemsRecord>
+                                    listViewFiltrosPedidoItemsRecordList =
+                                    snapshot.data;
+                                if (listViewFiltrosPedidoItemsRecordList
+                                    .isEmpty) {
+                                  return Center(
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          'https://cdn-icons-png.flaticon.com/512/1178/1178428.png',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  );
+                                }
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount:
+                                      listViewFiltrosPedidoItemsRecordList
+                                          .length,
+                                  itemBuilder: (context, listViewFiltrosIndex) {
+                                    final listViewFiltrosPedidoItemsRecord =
+                                        listViewFiltrosPedidoItemsRecordList[
+                                            listViewFiltrosIndex];
+                                    return Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          9, 9, 9, 9),
+                                      child: StreamBuilder<ProdutoRecord>(
+                                        stream: ProdutoRecord.getDocument(
+                                            listViewFiltrosPedidoItemsRecord
+                                                .product),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50,
+                                                height: 50,
+                                                child: SpinKitRipple(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .secondaryColor,
-                                              size: 50,
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      final menuItemProdutoRecord =
-                                          snapshot.data;
-                                      return Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 3,
-                                              color: Color(0x411D2429),
-                                              offset: Offset(0, 1),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8, 8, 8, 8),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 1, 1, 1),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(12),
-                                                  child: Image.network(
-                                                    menuItemProdutoRecord
-                                                        .imgPrincipal,
-                                                    width: 70,
-                                                    height: 100,
-                                                    fit: BoxFit.cover,
-                                                  ),
+                                                  size: 50,
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(8, 8, 4, 0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
+                                            );
+                                          }
+                                          final menuItemProdutoRecord =
+                                              snapshot.data;
+                                          return Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 3,
+                                                  color: Color(0x411D2429),
+                                                  offset: Offset(0, 1),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(8, 8, 8, 8),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 1, 1, 1),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                      child: Image.network(
                                                         menuItemProdutoRecord
-                                                            .productName,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                            .imgPrincipal,
+                                                        width: 70,
+                                                        height: 100,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8, 8, 4, 0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            menuItemProdutoRecord
+                                                                .productName,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .subtitle1
                                                                 .override(
                                                                   fontFamily:
@@ -1187,85 +1227,86 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                                       FontWeight
                                                                           .w500,
                                                                 ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      4, 8, 0),
-                                                          child: AutoSizeText(
-                                                            menuItemProdutoRecord
-                                                                .descrition
-                                                                .maybeHandleOverflow(
-                                                              maxChars: 70,
-                                                              replacement: '…',
-                                                            ),
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend Deca',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize: 14,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
                                                           ),
-                                                        ),
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          4,
+                                                                          8,
+                                                                          0),
+                                                              child:
+                                                                  AutoSizeText(
+                                                                menuItemProdutoRecord
+                                                                    .descrition
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 70,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend Deca',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 4, 0, 0),
-                                                    child: Icon(
-                                                      Icons
-                                                          .chevron_right_rounded,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 24,
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 0, 4, 8),
-                                                    child: Text(
-                                                      formatNumber(
-                                                        listViewFiltrosPedidoItemsRecord
-                                                            .valueLiquido,
-                                                        formatType:
-                                                            FormatType.decimal,
-                                                        decimalType: DecimalType
-                                                            .commaDecimal,
-                                                        currency: 'R\$ ',
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 4, 0, 0),
+                                                        child: Icon(
+                                                          Icons
+                                                              .chevron_right_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 24,
+                                                        ),
                                                       ),
-                                                      textAlign: TextAlign.end,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 0, 4, 8),
+                                                        child: Text(
+                                                          functions.maskPrecoLiquido(
+                                                              listViewFiltrosPedidoItemsRecord
+                                                                  .valueLiquido),
+                                                          textAlign:
+                                                              TextAlign.end,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
@@ -1278,19 +1319,21 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                                     FontWeight
                                                                         .w500,
                                                               ),
-                                                    ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                              );
-                            },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,

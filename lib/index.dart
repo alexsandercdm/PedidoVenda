@@ -12,4 +12,3 @@ export 'produtos_cadastros/produtos_cadastros_widget.dart'
     show ProdutosCadastrosWidget;
 export 'pedidos/pedidos_widget.dart' show PedidosWidget;
 export 'order_item/order_item_widget.dart' show OrderItemWidget;
-export 'produtos_order/produtos_order_widget.dart' show ProdutosOrderWidget;

@@ -64,6 +64,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Login',
       'en': 'login',
     },
+    'kt08e0m0': {
+      'pt': 'Home',
+      'en': '',
+    },
   },
   // Home
   {
@@ -974,6 +978,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Inserir Produto',
       'en': '',
     },
+    'una1r86m': {
+      'pt': 'refrigerante, coca-cola, pizza...',
+      'en': '',
+    },
     'wpgez4ek': {
       'pt': 'Search',
       'en': '',
@@ -1016,21 +1024,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'oejepwl1': {
       'pt': 'Itens',
-      'en': '',
-    },
-  },
-  // produtosOrder
-  {
-    'uwbq1wyi': {
-      'pt': '[Some hint text...]',
-      'en': '',
-    },
-    'qaoxs6u9': {
-      'pt': 'Adicionar Produto',
-      'en': '',
-    },
-    'oonwfwm1': {
-      'pt': 'Home',
       'en': '',
     },
   },
@@ -1147,6 +1140,61 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'x3xoixfg': {
       'pt': 'Field is required',
+      'en': '',
+    },
+  },
+  // adicionar_podutos
+  {
+    '77mxhcz8': {
+      'pt': 'Unidade',
+      'en': '',
+    },
+    'th3jsfc8': {
+      'pt': 'Unidade de venda do item',
+      'en': '',
+    },
+    'btqpepx9': {
+      'pt': 'Quantidade',
+      'en': '',
+    },
+    'r6rblpcs': {
+      'pt': 'Quantidade de Itens na venda',
+      'en': '',
+    },
+    'vlfjmbjq': {
+      'pt': 'Desconto',
+      'en': '',
+    },
+    'x26tmth0': {
+      'pt': 'Desconto Total da Venda %',
+      'en': '',
+    },
+    'rt25vvpx': {
+      'pt': '0',
+      'en': '',
+    },
+    'utiidicw': {
+      'pt': 'Resumo',
+      'en': '',
+    },
+    'ma37gdbc': {
+      'pt': 'Preço de Tabela',
+      'en': '',
+    },
+    'wz2o2w2a': {
+      'pt': 'Preço Líquido',
+      'en': '',
+    },
+    'dbey7pwi': {
+      'pt': 'Desconto',
+      'en': '',
+    },
+    '2gwdsfbh': {
+      'pt': 'Total',
+      'en': '',
+    },
+    'q5bu4bld': {
+      'pt': 'Confirmar Item',
       'en': '',
     },
   },

@@ -25,6 +25,8 @@ class FFAppState {
   String img;
 
   int qtd = 1;
+
+  double desconto = 0;
 }
 
 LatLng _latLngFromString(String val) {
