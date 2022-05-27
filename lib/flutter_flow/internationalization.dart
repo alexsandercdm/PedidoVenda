@@ -1021,7 +1021,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // produtosOrder
   {
-    '8j43imxh': {
+    'uwbq1wyi': {
       'pt': '[Some hint text...]',
       'en': '',
     },

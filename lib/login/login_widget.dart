@@ -157,6 +157,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               onTap: () => setState(
                                 () => senhaVisibility = !senhaVisibility,
                               ),
+                              focusNode: FocusNode(skipTraversal: true),
                               child: Icon(
                                 senhaVisibility
                                     ? Icons.visibility_outlined
