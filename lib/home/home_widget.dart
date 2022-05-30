@@ -38,7 +38,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           },
         ),
         title: Text(
-          'Página Inicial',
+          'Página Inicial VSCODE',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
