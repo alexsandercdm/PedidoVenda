@@ -11,6 +11,7 @@ import 'unidade_record.dart';
 import 'tabela_preco_products_record.dart';
 import 'pedido_items_record.dart';
 import 'users_record.dart';
+import 'items_record.dart';
 
 import 'index.dart';
 
@@ -32,6 +33,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   TabelaPrecoProductsRecord,
   PedidoItemsRecord,
   UsersRecord,
+  ItemsRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

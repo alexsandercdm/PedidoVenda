@@ -71,12 +71,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    '5ruexcio': {
-      'pt': 'Produtos Cadastrados',
+    '2zub5iuf': {
+      'pt': 'Seja Bem-Vindo!',
       'en': '',
     },
-    '28l2u89g': {
-      'pt': 'Pedidos Realizados',
+    'nb6zxmvv': {
+      'pt': 'Página Inicial',
       'en': '',
     },
     'pjgmgor0': {
@@ -86,8 +86,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Empresas
   {
-    '2ehhraqr': {
-      'pt': 'Adicionar Empresa',
+    'd8tyidvl': {
+      'pt': 'Page Title',
       'en': '',
     },
     'swzg1pu1': {
@@ -288,8 +288,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Clientes
   {
-    'lmerfco6': {
-      'pt': 'Adicionar Cliente',
+    'va4jp67a': {
+      'pt': 'Clientes',
       'en': '',
     },
     'bveii3d7': {
@@ -299,10 +299,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ClientesCadastro
   {
-    'ubgl9mah': {
-      'pt': 'Cadastro de Clientes',
-      'en': '',
-    },
     '3tzf6byj': {
       'pt': 'Cadastro',
       'en': '',
@@ -515,6 +511,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Salvar',
       'en': '',
     },
+    'q1gjt8r7': {
+      'pt': 'Cadastro de Cliente',
+      'en': '',
+    },
     '5vbjhhxx': {
       'pt': 'Clientes',
       'en': '',
@@ -522,6 +522,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Produtos
   {
+    'iuq9uj7z': {
+      'pt': 'Produtos',
+      'en': '',
+    },
     'dgzrdpug': {
       'pt': 'Produtos',
       'en': '',
@@ -820,6 +824,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Salvar',
       'en': '',
     },
+    'ymfv010v': {
+      'pt': 'Cadasto de Produtos',
+      'en': '',
+    },
     'nhan914h': {
       'pt': 'Produtos',
       'en': '',
@@ -827,24 +835,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Pedidos
   {
-    'nzusky2l': {
-      'pt': 'Page Title',
-      'en': '',
-    },
-    '3trzio1j': {
-      'pt': 'Criar Pedido',
-      'en': '',
-    },
-    'zqp1dh4v': {
-      'pt': 'Estimated Pickup TIme',
-      'en': '',
-    },
-    'j4f0ly6n': {
-      'pt': 'Order Summary',
-      'en': '',
-    },
-    'vzrgm1a2': {
-      'pt': '(4 items)',
+    's63pg1tz': {
+      'pt': 'Pedidos',
       'en': '',
     },
     '7tpr6h8h': {
@@ -854,10 +846,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // order_item
   {
-    'clzz2mnr': {
-      'pt': 'Pedidos',
-      'en': '',
-    },
     '2035t9fz': {
       'pt': 'Cabeçalho',
       'en': '',
@@ -947,7 +935,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'prdl7idb': {
-      'pt': 'Option 1',
+      'pt': 'Grátis',
       'en': '',
     },
     'aae5qs89': {
@@ -970,6 +958,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Observações Interna',
       'en': '',
     },
+    '2uv0mqtl': {
+      'pt': 'Field is required',
+      'en': '',
+    },
+    'fr1qi70l': {
+      'pt': 'Field is required',
+      'en': '',
+    },
+    '7imnh70b': {
+      'pt': 'Field is required',
+      'en': '',
+    },
+    '8zfbrffv': {
+      'pt': 'Field is required',
+      'en': '',
+    },
+    'lfo0nt6t': {
+      'pt': 'Field is required',
+      'en': '',
+    },
     'v7ly75w7': {
       'pt': 'Produtos',
       'en': '',
@@ -988,6 +996,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qipk3hp4': {
       'pt': 'Itens',
+      'en': '',
+    },
+    'qebatqtz': {
+      'pt': 'Share',
       'en': '',
     },
     'ga1nhttp': {
@@ -1022,6 +1034,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Fechar Pedido',
       'en': '',
     },
+    'uv5b2ugf': {
+      'pt': 'Page Title',
+      'en': '',
+    },
     'oejepwl1': {
       'pt': 'Itens',
       'en': '',
@@ -1030,19 +1046,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // produtosDetails
   {
     'uguc34vv': {
-      'pt': 'Produtos',
+      'pt': 'Cadastrar Produtos',
       'en': '',
     },
     'ofluqzg7': {
-      'pt': 'Marca',
+      'pt': 'Cadastar Marca',
       'en': '',
     },
     '6fed193r': {
-      'pt': 'Unidade',
+      'pt': 'Cadastrar Unidade',
       'en': '',
     },
     't9fdytyu': {
-      'pt': 'Categoria',
+      'pt': 'Cadastrar Categoria',
       'en': '',
     },
     'u97wxqsm': {
@@ -1195,6 +1211,45 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'q5bu4bld': {
       'pt': 'Confirmar Item',
+      'en': '',
+    },
+  },
+  // Menu
+  {
+    'tcutck3s': {
+      'pt': 'Menu',
+      'en': '',
+    },
+    '67gskevq': {
+      'pt': 'Página Inicial',
+      'en': '',
+    },
+    '08bpfzhl': {
+      'pt': 'Empresas',
+      'en': '',
+    },
+    'dau2huhi': {
+      'pt': 'Clientes',
+      'en': '',
+    },
+    'z5j8t8g0': {
+      'pt': 'Carteira',
+      'en': '',
+    },
+    'rmn2y2tx': {
+      'pt': 'Cadastro de Clientes',
+      'en': '',
+    },
+    'vt6cfgh3': {
+      'pt': 'Produtos',
+      'en': '',
+    },
+    '5tivqo2u': {
+      'pt': 'Produtos',
+      'en': '',
+    },
+    'd5i5nnuv': {
+      'pt': 'Pedidos',
       'en': '',
     },
   },

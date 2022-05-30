@@ -28,7 +28,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
       width: double.infinity,
       height: 380,
       decoration: BoxDecoration(
-        color: Color(0xFF262D34),
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             blurRadius: 5,
@@ -86,7 +86,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                   setState(() {});
                 },
                 text: FFLocalizations.of(context).getText(
-                  'uguc34vv' /* Produtos */,
+                  'uguc34vv' /* Cadastrar Produtos */,
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
@@ -102,7 +102,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                     color: Colors.transparent,
                     width: 1,
                   ),
-                  borderRadius: 40,
+                  borderRadius: 10,
                 ),
               ),
             ),
@@ -123,7 +123,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                   );
                 },
                 text: FFLocalizations.of(context).getText(
-                  'ofluqzg7' /* Marca */,
+                  'ofluqzg7' /* Cadastar Marca */,
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
@@ -139,7 +139,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                     color: Colors.transparent,
                     width: 1,
                   ),
-                  borderRadius: 40,
+                  borderRadius: 10,
                 ),
               ),
             ),
@@ -160,7 +160,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                   );
                 },
                 text: FFLocalizations.of(context).getText(
-                  '6fed193r' /* Unidade */,
+                  '6fed193r' /* Cadastrar Unidade */,
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
@@ -176,7 +176,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                     color: Colors.transparent,
                     width: 1,
                   ),
-                  borderRadius: 40,
+                  borderRadius: 10,
                 ),
               ),
             ),
@@ -197,7 +197,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                   );
                 },
                 text: FFLocalizations.of(context).getText(
-                  't9fdytyu' /* Categoria */,
+                  't9fdytyu' /* Cadastrar Categoria */,
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
@@ -213,7 +213,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                     color: Colors.transparent,
                     width: 1,
                   ),
-                  borderRadius: 40,
+                  borderRadius: 10,
                 ),
               ),
             ),
@@ -240,7 +240,7 @@ class _ProdutosDetailsWidgetState extends State<ProdutosDetailsWidget> {
                     color: Colors.transparent,
                     width: 1,
                   ),
-                  borderRadius: 40,
+                  borderRadius: 10,
                 ),
               ),
             ),

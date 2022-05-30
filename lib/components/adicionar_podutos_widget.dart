@@ -688,6 +688,13 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                       widget.produto.salePrice,
                                       FFAppState().qtd),
                                   FFAppState().desconto)),
+                          'discountTotal':
+                              FieldValue.increment(FFAppState().desconto),
+                          'sale_products': FieldValue.increment(
+                              functions.calcPrecoLiquido(
+                                  widget.produto.salePrice, FFAppState().qtd)),
+                          'amount_products':
+                              FieldValue.increment(FFAppState().qtd),
                         };
                         await widget.order.reference.update(pedidosUpdateData);
                         Navigator.pop(context);

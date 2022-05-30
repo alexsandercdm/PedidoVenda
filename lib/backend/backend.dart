@@ -15,6 +15,7 @@ import 'schema/unidade_record.dart';
 import 'schema/tabela_preco_products_record.dart';
 import 'schema/pedido_items_record.dart';
 import 'schema/users_record.dart';
+import 'schema/items_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -33,6 +34,7 @@ export 'schema/unidade_record.dart';
 export 'schema/tabela_preco_products_record.dart';
 export 'schema/pedido_items_record.dart';
 export 'schema/users_record.dart';
+export 'schema/items_record.dart';
 
 /// Functions to query EmpresasRecords (as a Stream and as a Future).
 Stream<List<EmpresasRecord>> queryEmpresasRecord({
@@ -491,6 +493,51 @@ Future<FFFirestorePage<UsersRecord>> queryUsersRecordPage({
     queryCollectionPage(
       UsersRecord.collection,
       UsersRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query ItemsRecords (as a Stream and as a Future).
+Stream<List<ItemsRecord>> queryItemsRecord({
+  DocumentReference parent,
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ItemsRecord.collection(parent),
+      ItemsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ItemsRecord>> queryItemsRecordOnce({
+  DocumentReference parent,
+  Query Function(Query) queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ItemsRecord.collection(parent),
+      ItemsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ItemsRecord>> queryItemsRecordPage({
+  DocumentReference parent,
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      ItemsRecord.collection(parent),
+      ItemsRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

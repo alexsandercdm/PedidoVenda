@@ -1,12 +1,13 @@
 import '../backend/backend.dart';
+import '../components/menu_widget.dart';
 import '../components/produtos_details_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../produtos_cadastros/produtos_cadastros_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProdutosWidget extends StatefulWidget {
@@ -23,25 +24,62 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
-        child: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          flexibleSpace: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 40, 40, 0),
-            child: SvgPicture.asset(
-              'assets/images/logoipsum-logo-33.svg',
-              width: 100,
-              height: 100,
-              fit: BoxFit.contain,
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.menu_rounded,
+            color: FlutterFlowTheme.of(context).textButton,
+            size: 30,
           ),
-          actions: [],
-          elevation: 3,
+          onPressed: () async {
+            scaffoldKey.currentState.openDrawer();
+          },
         ),
+        title: Text(
+          'Produtos',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: FlutterFlowTheme.of(context).textButton,
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 3,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (context) {
+              return Padding(
+                padding: MediaQuery.of(context).viewInsets,
+                child: ProdutosDetailsWidget(),
+              );
+            },
+          );
+        },
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        elevation: 8,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 24,
+        ),
+      ),
+      drawer: Drawer(
+        elevation: 16,
+        child: MenuWidget(),
+      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -49,35 +87,6 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18, 18, 18, 18),
-                child: Container(
-                  decoration: BoxDecoration(),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          context: context,
-                          builder: (context) {
-                            return Padding(
-                              padding: MediaQuery.of(context).viewInsets,
-                              child: ProdutosDetailsWidget(),
-                            );
-                          },
-                        );
-                      },
-                      child: Icon(
-                        Icons.menu,
-                        color: FlutterFlowTheme.of(context).textButton,
-                        size: 32,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               Expanded(
                 child: StreamBuilder<List<ProdutoRecord>>(
                   stream: queryProdutoRecord(),

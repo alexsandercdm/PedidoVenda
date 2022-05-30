@@ -1,13 +1,13 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../clientes_cadastro/clientes_cadastro_widget.dart';
+import '../components/menu_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ClientesWidget extends StatefulWidget {
@@ -25,25 +25,71 @@ class _ClientesWidgetState extends State<ClientesWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
-        child: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          flexibleSpace: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15, 40, 15, 0),
-            child: SvgPicture.asset(
-              'assets/images/logoipsum-logo-33.svg',
-              width: 100,
-              height: 100,
-              fit: BoxFit.fill,
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.menu_rounded,
+            color: FlutterFlowTheme.of(context).textButton,
+            size: 30,
           ),
-          actions: [],
-          elevation: 3,
+          onPressed: () async {
+            scaffoldKey.currentState.openDrawer();
+          },
         ),
+        title: Text(
+          'Clientes',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: FlutterFlowTheme.of(context).textButton,
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 3,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final clientesCreateData = createClientesRecordData(
+            createdDate: getCurrentTimestamp,
+          );
+          var clientesRecordReference = ClientesRecord.collection.doc();
+          await clientesRecordReference.set(clientesCreateData);
+          clientes = ClientesRecord.getDocumentFromData(
+              clientesCreateData, clientesRecordReference);
+          await Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.leftToRight,
+              duration: Duration(milliseconds: 100),
+              reverseDuration: Duration(milliseconds: 100),
+              child: ClientesCadastroWidget(
+                collectionCadastro: clientes,
+              ),
+            ),
+          );
+
+          setState(() {});
+        },
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        elevation: 8,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 24,
+        ),
+      ),
+      drawer: Drawer(
+        elevation: 16,
+        child: MenuWidget(),
+      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -156,82 +202,6 @@ class _ClientesWidgetState extends State<ClientesWidget> {
                           );
                         },
                       ),
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    decoration: BoxDecoration(),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        InkWell(
-                          onTap: () async {
-                            final clientesCreateData = createClientesRecordData(
-                              createdDate: getCurrentTimestamp,
-                            );
-                            var clientesRecordReference =
-                                ClientesRecord.collection.doc();
-                            await clientesRecordReference
-                                .set(clientesCreateData);
-                            clientes = ClientesRecord.getDocumentFromData(
-                                clientesCreateData, clientesRecordReference);
-                            await Navigator.push(
-                              context,
-                              PageTransition(
-                                type: PageTransitionType.leftToRight,
-                                duration: Duration(milliseconds: 100),
-                                reverseDuration: Duration(milliseconds: 100),
-                                child: ClientesCadastroWidget(
-                                  collectionCadastro: clientes,
-                                ),
-                              ),
-                            );
-
-                            setState(() {});
-                          },
-                          child: Container(
-                            width: 180,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 60,
-                                    icon: Icon(
-                                      Icons.add_box_outlined,
-                                      color: Color(0xFFFDFFFC),
-                                      size: 30,
-                                    ),
-                                    onPressed: () {
-                                      print('IconButton pressed ...');
-                                    },
-                                  ),
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'lmerfco6' /* Adicionar Cliente */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFFC6DFDF),
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 ],

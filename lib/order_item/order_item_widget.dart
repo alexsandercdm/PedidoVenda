@@ -14,6 +14,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:text_search/text_search.dart';
@@ -36,7 +37,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
   String dropDownClienteValue;
   String dropDownEmpresaValue;
   TextEditingController fieldTextVendedorController;
-  String dropDownPedidoValue;
+  String dropDownTipoPedidoValue;
   String dropDownPagamentoValue;
   TextEditingController fieldTextCobrancaController;
   TextEditingController fieldTextEntregaController;
@@ -50,8 +51,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
   void initState() {
     super.initState();
     fieldTextCobrancaController = TextEditingController();
-    fieldTextVendedorController =
-        TextEditingController(text: currentUserDisplayName);
+    fieldTextVendedorController = TextEditingController();
     fieldTextEntregaController = TextEditingController();
     fieldTextValorFreteController = TextEditingController();
     obsInternaController = TextEditingController();
@@ -63,15 +63,27 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        title: Text(
-          FFLocalizations.of(context).getText(
-            'clzz2mnr' /* Pedidos */,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.menu_rounded,
+            color: FlutterFlowTheme.of(context).textButton,
+            size: 30,
           ),
+          onPressed: () async {
+            Navigator.pop(context);
+          },
+        ),
+        title: Text(
+          'Page Title',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
-                color: Colors.white,
+                color: FlutterFlowTheme.of(context).textButton,
                 fontSize: 22,
               ),
         ),
@@ -146,8 +158,8 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 9),
                                       child:
-                                          StreamBuilder<List<ClientesRecord>>(
-                                        stream: queryClientesRecord(),
+                                          FutureBuilder<List<ClientesRecord>>(
+                                        future: queryClientesRecordOnce(),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
                                           if (!snapshot.hasData) {
@@ -212,8 +224,8 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 18),
                                       child:
-                                          StreamBuilder<List<EmpresasRecord>>(
-                                        stream: queryEmpresasRecord(),
+                                          FutureBuilder<List<EmpresasRecord>>(
+                                        future: queryEmpresasRecordOnce(),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
                                           if (!snapshot.hasData) {
@@ -313,6 +325,16 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) {
+                                            return FFLocalizations.of(context)
+                                                .getText(
+                                              '2uv0mqtl' /* Field is required */,
+                                            );
+                                          }
+
+                                          return null;
+                                        },
                                       ),
                                     ),
                                     Text(
@@ -334,8 +356,8 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             'sbs4v1ky' /* Pedido */,
                                           )
                                         ].toList(),
-                                        onChanged: (val) => setState(
-                                            () => dropDownPedidoValue = val),
+                                        onChanged: (val) => setState(() =>
+                                            dropDownTipoPedidoValue = val),
                                         height: 50,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -448,6 +470,16 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) {
+                                            return FFLocalizations.of(context)
+                                                .getText(
+                                              'fr1qi70l' /* Field is required */,
+                                            );
+                                          }
+
+                                          return null;
+                                        },
                                       ),
                                     ),
                                     Padding(
@@ -496,6 +528,16 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) {
+                                            return FFLocalizations.of(context)
+                                                .getText(
+                                              '7imnh70b' /* Field is required */,
+                                            );
+                                          }
+
+                                          return null;
+                                        },
                                       ),
                                     ),
                                     Text(
@@ -511,7 +553,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                       child: FlutterFlowDropDown(
                                         options: [
                                           FFLocalizations.of(context).getText(
-                                            'prdl7idb' /* Option 1 */,
+                                            'prdl7idb' /* Grátis */,
                                           )
                                         ].toList(),
                                         onChanged: (val) => setState(
@@ -585,6 +627,16 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
                                         keyboardType: TextInputType.number,
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) {
+                                            return FFLocalizations.of(context)
+                                                .getText(
+                                              '8zfbrffv' /* Field is required */,
+                                            );
+                                          }
+
+                                          return null;
+                                        },
                                       ),
                                     ),
                                     Padding(
@@ -604,6 +656,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                               .getText(
                                             'vutc73hp' /* Observações Interna */,
                                           ),
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText1,
                                           hintText: FFLocalizations.of(context)
                                               .getText(
                                             'rreeq982' /* Observações Interna */,
@@ -637,7 +692,18 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
+                                        maxLines: 5,
                                         keyboardType: TextInputType.multiline,
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) {
+                                            return FFLocalizations.of(context)
+                                                .getText(
+                                              'lfo0nt6t' /* Field is required */,
+                                            );
+                                          }
+
+                                          return null;
+                                        },
                                       ),
                                     ),
                                   ],
@@ -1118,6 +1184,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                 }
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount:
                                       listViewFiltrosPedidoItemsRecordList
@@ -1128,7 +1195,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             listViewFiltrosIndex];
                                     return Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          9, 9, 9, 9),
+                                          5, 5, 5, 5),
                                       child: StreamBuilder<ProdutoRecord>(
                                         stream: ProdutoRecord.getDocument(
                                             listViewFiltrosPedidoItemsRecord
@@ -1149,182 +1216,96 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                               ),
                                             );
                                           }
-                                          final menuItemProdutoRecord =
+                                          final listTileProdutoRecord =
                                               snapshot.data;
-                                          return Container(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            height: 100,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 3,
-                                                  color: Color(0x411D2429),
-                                                  offset: Offset(0, 1),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(16),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8, 8, 8, 8),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 1, 1, 1),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12),
-                                                      child: Image.network(
-                                                        menuItemProdutoRecord
-                                                            .imgPrincipal,
-                                                        width: 70,
-                                                        height: 100,
-                                                        fit: BoxFit.cover,
+                                          return Slidable(
+                                            actionPane:
+                                                const SlidableScrollActionPane(),
+                                            secondaryActions: [
+                                              IconSlideAction(
+                                                caption:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'qebatqtz' /* Share */,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                icon: Icons
+                                                    .delete_forever_rounded,
+                                                onTap: () async {
+                                                  final pedidosUpdateData = {
+                                                    'sale_total':
+                                                        FieldValue.increment(
+                                                            -(listViewFiltrosPedidoItemsRecord
+                                                                .valueBruto)),
+                                                    'discountTotal':
+                                                        FieldValue.increment(
+                                                            -(listViewFiltrosPedidoItemsRecord
+                                                                .discountTotal)),
+                                                    'sale_products':
+                                                        FieldValue.increment(
+                                                            -(listViewFiltrosPedidoItemsRecord
+                                                                .priceTable)),
+                                                    'amount_products':
+                                                        FieldValue.increment(
+                                                            -(listViewFiltrosPedidoItemsRecord
+                                                                .amount)),
+                                                  };
+                                                  await widget
+                                                      .recordPedido.reference
+                                                      .update(
+                                                          pedidosUpdateData);
+                                                  await listViewFiltrosPedidoItemsRecord
+                                                      .reference
+                                                      .delete();
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'Item Excluído.',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle1,
                                                       ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          Color(0x00000000),
                                                     ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  8, 8, 4, 0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            menuItemProdutoRecord
-                                                                .productName,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .subtitle1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend Deca',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                  fontSize: 20,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          4,
-                                                                          8,
-                                                                          0),
-                                                              child:
-                                                                  AutoSizeText(
-                                                                menuItemProdutoRecord
-                                                                    .descrition
-                                                                    .maybeHandleOverflow(
-                                                                  maxChars: 70,
-                                                                  replacement:
-                                                                      '…',
-                                                                ),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .start,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyText1
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Lexend Deca',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          14,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0, 4, 0, 0),
-                                                        child: Icon(
-                                                          Icons
-                                                              .chevron_right_rounded,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          size: 24,
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0, 0, 4, 8),
-                                                        child: Text(
-                                                          functions.maskPrecoLiquido(
-                                                              listViewFiltrosPedidoItemsRecord
-                                                                  .valueLiquido),
-                                                          textAlign:
-                                                              TextAlign.end,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend Deca',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .textButton,
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                  );
+                                                },
                                               ),
+                                            ],
+                                            child: ListTile(
+                                              title: Text(
+                                                listTileProdutoRecord
+                                                    .productName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .title3,
+                                              ),
+                                              subtitle: Text(
+                                                '${listViewFiltrosPedidoItemsRecord.amount.toString()} - ${formatNumber(
+                                                  listViewFiltrosPedidoItemsRecord
+                                                      .valueLiquido,
+                                                  formatType:
+                                                      FormatType.decimal,
+                                                  decimalType:
+                                                      DecimalType.commaDecimal,
+                                                  currency: 'R\$ ',
+                                                )}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
+                                              ),
+                                              trailing: Icon(
+                                                Icons.arrow_forward_ios,
+                                                color: Color(0xFF303030),
+                                                size: 20,
+                                              ),
+                                              dense: false,
                                             ),
                                           );
                                         },
@@ -1335,333 +1316,513 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                               },
                             ),
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24, 16, 24, 4),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'jikgsuxk' /* Checkout do Pedido */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF7C8791),
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(9, 9, 9, 18),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                StreamBuilder<List<PedidosRecord>>(
+                                  stream: queryPedidosRecord(
+                                    queryBuilder: (pedidosRecord) =>
+                                        pedidosRecord.where('orderReferente',
+                                            isEqualTo:
+                                                widget.recordPedido.reference),
+                                    singleRecord: true,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24, 4, 24, 0),
-                                    child: Row(
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitRipple(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryColor,
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<PedidosRecord>
+                                        priceSummaryPedidosRecordList =
+                                        snapshot.data;
+                                    // Return an empty Container when the document does not exist.
+                                    if (snapshot.data.isEmpty) {
+                                      return Container();
+                                    }
+                                    final priceSummaryPedidosRecord =
+                                        priceSummaryPedidosRecordList.isNotEmpty
+                                            ? priceSummaryPedidosRecordList
+                                                .first
+                                            : null;
+                                    return Column(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'wszoemst' /* Valor total de Tabela: */,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24, 16, 24, 4),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'jikgsuxk' /* Checkout do Pedido */,
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText2
+                                                    .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: Color(0xFF7C8791),
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                              ),
+                                            ],
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF7C8791),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
                                         ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            formatNumber(
-                                              widget.recordPedido.saleProducts,
-                                              formatType: FormatType.decimal,
-                                              decimalType:
-                                                  DecimalType.commaDecimal,
-                                              currency: 'R\$ ',
-                                            ),
-                                            '0',
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24, 4, 24, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'wszoemst' /* Valor total de Tabela: */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF7C8791),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  functions.maskPrecoLiquido(
+                                                      priceSummaryPedidosRecord
+                                                          .saleProducts),
+                                                  '0',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF090F13),
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                            ],
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF090F13),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.normal,
-                                              ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24, 4, 24, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'zei09687' /* Frete: */,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24, 4, 24, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'zei09687' /* Frete: */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF7C8791),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  functions.maskPrecoLiquido(
+                                                      priceSummaryPedidosRecord
+                                                          .valueDelivery),
+                                                  '0',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF090F13),
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                            ],
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF7C8791),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
                                         ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            formatNumber(
-                                              widget.recordPedido.valueDelivery,
-                                              formatType: FormatType.decimal,
-                                              decimalType:
-                                                  DecimalType.commaDecimal,
-                                              currency: 'R\$ ',
-                                            ),
-                                            '0',
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24, 4, 24, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'a9o0jbca' /* Descontos: */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF7C8791),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  functions.maskPrecoLiquido(
+                                                      priceSummaryPedidosRecord
+                                                          .discountTotal),
+                                                  '0',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF090F13),
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                            ],
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF090F13),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.normal,
-                                              ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24, 4, 24, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'a9o0jbca' /* Descontos: */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF7C8791),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            formatNumber(
-                                              widget.recordPedido.discountTotal,
-                                              formatType: FormatType.decimal,
-                                              decimalType:
-                                                  DecimalType.commaDecimal,
-                                              currency: 'R\$ ',
-                                            ),
-                                            '0',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF090F13),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24, 4, 24, 24),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'rwgvj1yg' /* Total do Pedido: */,
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .subtitle1
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    color: Color(0xFF7C8791),
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w500,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24, 4, 24, 24),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'rwgvj1yg' /* Total do Pedido: */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF7C8791),
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                                   ),
-                                            ),
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 30,
-                                              borderWidth: 1,
-                                              buttonSize: 36,
-                                              icon: Icon(
-                                                Icons.info_outlined,
-                                                color: Color(0xFF7C8791),
-                                                size: 18,
+                                                  FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 30,
+                                                    borderWidth: 1,
+                                                    buttonSize: 36,
+                                                    icon: Icon(
+                                                      Icons.info_outlined,
+                                                      color: Color(0xFF7C8791),
+                                                      size: 18,
+                                                    ),
+                                                    onPressed: () {
+                                                      print(
+                                                          'IconButton pressed ...');
+                                                    },
+                                                  ),
+                                                ],
                                               ),
-                                              onPressed: () {
-                                                print('IconButton pressed ...');
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            formatNumber(
-                                              widget.recordPedido.saleTotal,
-                                              formatType: FormatType.decimal,
-                                              decimalType:
-                                                  DecimalType.commaDecimal,
-                                              currency: 'R\$ ',
-                                            ),
-                                            '0',
+                                              Text(
+                                                functions.maskPrecoLiquido(
+                                                    priceSummaryPedidosRecord
+                                                        .saleTotal),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .title1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF090F13),
+                                                          fontSize: 24,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                              ),
+                                            ],
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .title1
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF090F13),
-                                                fontSize: 24,
-                                                fontWeight: FontWeight.w600,
-                                              ),
                                         ),
                                       ],
-                                    ),
+                                    );
+                                  },
+                                ),
+                                Spacer(),
+                                FutureBuilder<List<EmpresasRecord>>(
+                                  future: queryEmpresasRecordOnce(
+                                    queryBuilder: (empresasRecord) =>
+                                        empresasRecord.where('social_reason',
+                                            isEqualTo: dropDownEmpresaValue),
+                                    singleRecord: true,
                                   ),
-                                ],
-                              ),
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(),
-                                child: Container(
-                                  decoration: BoxDecoration(),
-                                  child: Container(
-                                    decoration: BoxDecoration(),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          9, 0, 9, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              Navigator.pop(context);
-                                              if ((widget.recordPedido
-                                                      .typeDcument) ==
-                                                  '') {
-                                                await widget
-                                                    .recordPedido.reference
-                                                    .delete();
-                                                return;
-                                              } else {
-                                                return;
-                                              }
-                                            },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'yw298vdq' /* Cancelar */,
-                                            ),
-                                            options: FFButtonOptions(
-                                              width: 130,
-                                              height: 40,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitRipple(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryColor,
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<EmpresasRecord>
+                                        cFiltroEmpresasEmpresasRecordList =
+                                        snapshot.data;
+                                    final cFiltroEmpresasEmpresasRecord =
+                                        cFiltroEmpresasEmpresasRecordList
+                                                .isNotEmpty
+                                            ? cFiltroEmpresasEmpresasRecordList
+                                                .first
+                                            : null;
+                                    return Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(),
+                                      child:
+                                          FutureBuilder<List<ClientesRecord>>(
+                                        future: queryClientesRecordOnce(
+                                          queryBuilder: (clientesRecord) =>
+                                              clientesRecord.where('full_name',
+                                                  isEqualTo:
+                                                      dropDownClienteValue),
+                                          singleRecord: true,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50,
+                                                height: 50,
+                                                child: SpinKitRipple(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  size: 50,
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<ClientesRecord>
+                                              cFiltroCategoriaClientesRecordList =
+                                              snapshot.data;
+                                          final cFiltroCategoriaClientesRecord =
+                                              cFiltroCategoriaClientesRecordList
+                                                      .isNotEmpty
+                                                  ? cFiltroCategoriaClientesRecordList
+                                                      .first
+                                                  : null;
+                                          return Container(
+                                            decoration: BoxDecoration(),
+                                            child: Container(
+                                              decoration: BoxDecoration(),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(9, 0, 9, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    FFButtonWidget(
+                                                      onPressed: () async {
+                                                        Navigator.pop(context);
+                                                        if ((widget.recordPedido
+                                                                .orderReferente !=
+                                                            null)) {
+                                                          await widget
+                                                              .recordPedido
+                                                              .reference
+                                                              .delete();
+                                                          return;
+                                                        } else {
+                                                          return;
+                                                        }
+                                                      },
+                                                      text: FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'yw298vdq' /* Cancelar */,
+                                                      ),
+                                                      options: FFButtonOptions(
+                                                        width: 130,
+                                                        height: 40,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle2
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0xFF303F9F),
+                                                          width: 2,
+                                                        ),
+                                                        borderRadius: 12,
+                                                      ),
+                                                    ),
+                                                    FFButtonWidget(
+                                                      onPressed: () async {
+                                                        final pedidosUpdateData =
+                                                            createPedidosRecordData(
+                                                          company:
+                                                              cFiltroEmpresasEmpresasRecord
+                                                                  .reference,
+                                                          customer:
+                                                              cFiltroCategoriaClientesRecord
+                                                                  .reference,
+                                                          typeDcument:
+                                                              dropDownTipoPedidoValue,
+                                                          saleDate:
+                                                              getCurrentTimestamp,
+                                                          dateMovement:
+                                                              getCurrentTimestamp,
+                                                          paymentMethod:
+                                                              dropDownPagamentoValue,
+                                                          valueDelivery:
+                                                              double.parse(
+                                                                  fieldTextValorFreteController
+                                                                      .text),
+                                                          observation:
+                                                              obsInternaController
+                                                                  .text,
+                                                          modifieldDate:
+                                                              getCurrentTimestamp,
+                                                          conditionPayment:
+                                                              fieldTextCobrancaController
+                                                                  .text,
+                                                        );
+                                                        await widget
+                                                            .recordPedido
+                                                            .reference
+                                                            .update(
+                                                                pedidosUpdateData);
+                                                        setState(() {
+                                                          obsInternaController
+                                                              ?.clear();
+                                                          fieldTextVendedorController
+                                                              ?.clear();
+                                                          fieldTextCobrancaController
+                                                              ?.clear();
+                                                          fieldTextEntregaController
+                                                              ?.clear();
+                                                          fieldTextValorFreteController
+                                                              ?.clear();
+                                                          textFieldSearchController
+                                                              ?.clear();
+                                                        });
+                                                        Navigator.pop(context);
+                                                      },
+                                                      text: FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'or5qp1di' /* Fechar Pedido */,
+                                                      ),
+                                                      options: FFButtonOptions(
+                                                        width: 160,
+                                                        height: 40,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .primaryColor,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle2
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                        borderSide: BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1,
+                                                        ),
+                                                        borderRadius: 12,
                                                       ),
-                                              borderSide: BorderSide(
-                                                color: Color(0xFF303F9F),
-                                                width: 2,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                              borderRadius: 12,
                                             ),
-                                          ),
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              final pedidosUpdateData =
-                                                  createPedidosRecordData();
-                                              await widget
-                                                  .recordPedido.reference
-                                                  .update(pedidosUpdateData);
-                                              setState(() {
-                                                obsInternaController?.clear();
-                                              });
-                                              Navigator.pop(context);
-                                            },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'or5qp1di' /* Fechar Pedido */,
-                                            ),
-                                            options: FFButtonOptions(
-                                              width: 160,
-                                              height: 40,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryColor,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.white,
-                                                      ),
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1,
-                                              ),
-                                              borderRadius: 12,
-                                            ),
-                                          ),
-                                        ],
+                                          );
+                                        },
                                       ),
-                                    ),
-                                  ),
+                                    );
+                                  },
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),

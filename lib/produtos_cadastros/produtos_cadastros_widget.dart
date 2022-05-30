@@ -3,7 +3,6 @@ import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../components/categoria_widget.dart';
 import '../components/marca_widget.dart';
-import '../components/produtos_details_widget.dart';
 import '../components/unidade_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
@@ -16,7 +15,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProdutosCadastrosWidget extends StatefulWidget {
@@ -100,23 +98,34 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
-        child: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          flexibleSpace: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 40, 40, 0),
-            child: SvgPicture.asset(
-              'assets/images/logoipsum-logo-33.svg',
-              width: 100,
-              height: 100,
-              fit: BoxFit.contain,
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.menu_rounded,
+            color: FlutterFlowTheme.of(context).textButton,
+            size: 30,
           ),
-          actions: [],
-          elevation: 3,
+          onPressed: () async {
+            Navigator.pop(context);
+          },
         ),
+        title: Text(
+          'Cadasto de Produtos',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: FlutterFlowTheme.of(context).textButton,
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 3,
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -126,35 +135,6 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18, 18, 18, 18),
-                child: Container(
-                  decoration: BoxDecoration(),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          context: context,
-                          builder: (context) {
-                            return Padding(
-                              padding: MediaQuery.of(context).viewInsets,
-                              child: ProdutosDetailsWidget(),
-                            );
-                          },
-                        );
-                      },
-                      child: Icon(
-                        Icons.menu,
-                        color: FlutterFlowTheme.of(context).textButton,
-                        size: 32,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               Expanded(
                 child: Form(
                   key: formKey,

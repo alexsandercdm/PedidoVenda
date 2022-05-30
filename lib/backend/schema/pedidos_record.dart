@@ -102,6 +102,9 @@ abstract class PedidosRecord
   String get conditionPayment;
 
   @nullable
+  DocumentReference get orderReferente;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -169,6 +172,7 @@ Map<String, dynamic> createPedidosRecordData({
   DocumentReference vendedor,
   String typeOrder,
   String conditionPayment,
+  DocumentReference orderReferente,
 }) =>
     serializers.toFirestore(
         PedidosRecord.serializer,
@@ -196,4 +200,5 @@ Map<String, dynamic> createPedidosRecordData({
           ..orderProducts = null
           ..vendedor = vendedor
           ..typeOrder = typeOrder
-          ..conditionPayment = conditionPayment));
+          ..conditionPayment = conditionPayment
+          ..orderReferente = orderReferente));

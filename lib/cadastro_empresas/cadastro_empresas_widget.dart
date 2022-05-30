@@ -72,7 +72,7 @@ class _CadastroEmpresasWidgetState extends State<CadastroEmpresasWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -81,7 +81,7 @@ class _CadastroEmpresasWidgetState extends State<CadastroEmpresasWidget> {
           buttonSize: 60,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Colors.white,
+            color: FlutterFlowTheme.of(context).textButton,
             size: 30,
           ),
           onPressed: () async {
@@ -100,7 +100,7 @@ class _CadastroEmpresasWidgetState extends State<CadastroEmpresasWidget> {
           ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
-                color: Colors.white,
+                color: FlutterFlowTheme.of(context).textButton,
                 fontSize: 22,
               ),
         ),
