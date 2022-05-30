@@ -116,7 +116,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
           },
         ),
         title: Text(
-          'Cadasto de Produtos',
+          FFLocalizations.of(context).getText(
+            'kg0u7giz' /* Cadasto de Produtos */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,

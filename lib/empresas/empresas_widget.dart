@@ -43,7 +43,9 @@ class _EmpresasWidgetState extends State<EmpresasWidget> {
           },
         ),
         title: Text(
-          'Page Title',
+          FFLocalizations.of(context).getText(
+            'txsbwjaz' /* Page Title */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
@@ -88,7 +90,14 @@ class _EmpresasWidgetState extends State<EmpresasWidget> {
       ),
       drawer: Drawer(
         elevation: 16,
-        child: MenuWidget(),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).primaryBackground,
+          ),
+          child: MenuWidget(),
+        ),
       ),
       body: SafeArea(
         child: GestureDetector(

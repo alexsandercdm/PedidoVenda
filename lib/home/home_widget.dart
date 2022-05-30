@@ -38,7 +38,9 @@ class _HomeWidgetState extends State<HomeWidget> {
           },
         ),
         title: Text(
-          'Página Inicial',
+          FFLocalizations.of(context).getText(
+            'e1hc3j8k' /* Página Inicial */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
@@ -51,7 +53,14 @@ class _HomeWidgetState extends State<HomeWidget> {
       ),
       drawer: Drawer(
         elevation: 16,
-        child: MenuWidget(),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).primaryBackground,
+          ),
+          child: MenuWidget(),
+        ),
       ),
       body: SafeArea(
         child: GestureDetector(

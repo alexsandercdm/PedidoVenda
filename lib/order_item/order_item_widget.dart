@@ -80,7 +80,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
           },
         ),
         title: Text(
-          'Page Title',
+          FFLocalizations.of(context).getText(
+            '2871i6zp' /* Page Title */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
@@ -325,16 +327,6 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              '2uv0mqtl' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
                                       ),
                                     ),
                                     Text(
@@ -470,16 +462,6 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              'fr1qi70l' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
                                       ),
                                     ),
                                     Padding(
@@ -528,16 +510,6 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              '7imnh70b' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
                                       ),
                                     ),
                                     Text(
@@ -627,16 +599,6 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
                                         keyboardType: TextInputType.number,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              '8zfbrffv' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
                                       ),
                                     ),
                                     Padding(
@@ -694,16 +656,6 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             .bodyText1,
                                         maxLines: 5,
                                         keyboardType: TextInputType.multiline,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              'lfo0nt6t' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
                                       ),
                                     ),
                                   ],

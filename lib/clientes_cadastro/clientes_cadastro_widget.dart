@@ -95,7 +95,9 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
           },
         ),
         title: Text(
-          'Cadastro de Cliente',
+          FFLocalizations.of(context).getText(
+            'ukq0euhe' /* Cadastro de Cliente */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
