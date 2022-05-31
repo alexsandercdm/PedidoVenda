@@ -67,21 +67,31 @@ class _HomeWidgetState extends State<HomeWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      '2zub5iuf' /* Seja Bem-Vindo! */,
-                    ),
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).bodyText1,
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              '2zub5iuf' /* Seja Bem-Vindo! */,
+                            ),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                ],
               ),
             ],
           ),

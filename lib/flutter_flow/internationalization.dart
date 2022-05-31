@@ -71,12 +71,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    '2zub5iuf': {
-      'pt': 'Seja Bem-Vindo!',
-      'en': '',
-    },
     'e1hc3j8k': {
       'pt': 'Página Inicial',
+      'en': '',
+    },
+    '2zub5iuf': {
+      'pt': 'Seja Bem-Vindo!',
       'en': '',
     },
     'pjgmgor0': {
@@ -934,6 +934,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Frete',
       'en': '',
     },
+    'r34pome5': {
+      'pt': 'Grátis',
+      'en': '',
+    },
     'prdl7idb': {
       'pt': 'Grátis',
       'en': '',
@@ -956,6 +960,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rreeq982': {
       'pt': 'Observações Interna',
+      'en': '',
+    },
+    '9x4x5fur': {
+      'pt': ' ',
       'en': '',
     },
     '2uv0mqtl': {

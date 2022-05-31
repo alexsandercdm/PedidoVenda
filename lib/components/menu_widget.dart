@@ -37,6 +37,20 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
         opacity: 1,
       ),
     ),
+    'listViewOnActionTriggerAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      duration: 600,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
     'listViewOnPageLoadAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 300,
@@ -44,6 +58,20 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 50),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'listViewOnActionTriggerAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      duration: 600,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
         scale: 1,
         opacity: 0,
       ),
@@ -61,6 +89,11 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
     startPageLoadAnimations(
       animationsMap.values
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+    setupTriggerAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
       this,
     );
   }
@@ -247,7 +280,10 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       ),
                     ),
                   ],
-                ).animated([animationsMap['listViewOnPageLoadAnimation1']]),
+                ).animated([
+                  animationsMap['listViewOnPageLoadAnimation1'],
+                  animationsMap['listViewOnActionTriggerAnimation1']
+                ]),
               InkWell(
                 onTap: () async {
                   if ((FFAppState().menu) != 'Produtos') {
@@ -315,7 +351,10 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       ),
                     ),
                   ],
-                ).animated([animationsMap['listViewOnPageLoadAnimation2']]),
+                ).animated([
+                  animationsMap['listViewOnPageLoadAnimation2'],
+                  animationsMap['listViewOnActionTriggerAnimation2']
+                ]),
               InkWell(
                 onTap: () async {
                   await Navigator.push(

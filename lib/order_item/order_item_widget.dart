@@ -51,10 +51,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
   void initState() {
     super.initState();
     fieldTextCobrancaController = TextEditingController();
-    fieldTextVendedorController = TextEditingController();
     fieldTextEntregaController = TextEditingController();
     fieldTextValorFreteController = TextEditingController();
-    obsInternaController = TextEditingController();
+    obsInternaController = TextEditingController(text: ' ');
     textFieldSearchController = TextEditingController();
   }
 
@@ -143,7 +142,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(9, 9, 9, 9),
                             child: Form(
                               key: formKey,
-                              autovalidateMode: AutovalidateMode.always,
+                              autovalidateMode: AutovalidateMode.disabled,
                               child: SingleChildScrollView(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -281,54 +280,113 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         },
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 18),
-                                      child: TextFormField(
-                                        controller: fieldTextVendedorController,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          'fieldTextVendedorController',
-                                          Duration(milliseconds: 2000),
-                                          () => setState(() {}),
+                                    if ((dropDownClienteValue != null) &&
+                                        (dropDownClienteValue != ''))
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 0, 18),
+                                        child:
+                                            StreamBuilder<List<ClientesRecord>>(
+                                          stream: queryClientesRecord(
+                                            queryBuilder: (clientesRecord) =>
+                                                clientesRecord.where(
+                                                    'full_name',
+                                                    isEqualTo:
+                                                        dropDownClienteValue !=
+                                                                ''
+                                                            ? dropDownClienteValue
+                                                            : null),
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50,
+                                                  height: 50,
+                                                  child: SpinKitRipple(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryColor,
+                                                    size: 50,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<ClientesRecord>
+                                                fieldTextVendedorClientesRecordList =
+                                                snapshot.data;
+                                            final fieldTextVendedorClientesRecord =
+                                                fieldTextVendedorClientesRecordList
+                                                        .isNotEmpty
+                                                    ? fieldTextVendedorClientesRecordList
+                                                        .first
+                                                    : null;
+                                            return TextFormField(
+                                              controller:
+                                                  fieldTextVendedorController ??=
+                                                      TextEditingController(
+                                                text:
+                                                    fieldTextVendedorClientesRecord
+                                                        .addressIbge
+                                                        .toString(),
+                                              ),
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                'fieldTextVendedorController',
+                                                Duration(milliseconds: 2000),
+                                                () => setState(() {}),
+                                              ),
+                                              autofocus: true,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'nd6mwr6y' /* Endereço de Cobrança */,
+                                                ),
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'yon8il12' /* Endereço de Cobrança */,
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0xFF757575),
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(4.0),
+                                                    topRight:
+                                                        Radius.circular(4.0),
+                                                  ),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0xFF757575),
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(4.0),
+                                                    topRight:
+                                                        Radius.circular(4.0),
+                                                  ),
+                                                ),
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            );
+                                          },
                                         ),
-                                        autofocus: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            'nd6mwr6y' /* Endereço de Cobrança */,
-                                          ),
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            'yon8il12' /* Endereço de Cobrança */,
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
                                       ),
-                                    ),
                                     Text(
                                       FFLocalizations.of(context).getText(
                                         'dcpfmblc' /* Tipo de Pedido */,
@@ -419,97 +477,134 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 18),
-                                      child: TextFormField(
-                                        controller: fieldTextCobrancaController,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          'fieldTextCobrancaController',
-                                          Duration(milliseconds: 2000),
-                                          () => setState(() {}),
-                                        ),
-                                        autofocus: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            '69avcayv' /* Endereço de Cobrança */,
-                                          ),
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            'yk2blgrk' /* Endereço de Cobrança */,
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 18),
-                                      child: TextFormField(
-                                        controller: fieldTextEntregaController,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          'fieldTextEntregaController',
-                                          Duration(milliseconds: 2000),
-                                          () => setState(() {}),
-                                        ),
-                                        autofocus: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            'evdkfaa3' /* Endereço de Entrega */,
-                                          ),
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            'afnmhxub' /* Endereço de Entrega */,
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 0, 8, 0),
+                                              child: TextFormField(
+                                                controller:
+                                                    fieldTextCobrancaController,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  'fieldTextCobrancaController',
+                                                  Duration(milliseconds: 2000),
+                                                  () => setState(() {}),
+                                                ),
+                                                autofocus: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '69avcayv' /* Endereço de Cobrança */,
+                                                  ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'yk2blgrk' /* Endereço de Cobrança */,
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0xFF757575),
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0xFF757575),
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1,
+                                              ),
                                             ),
                                           ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(8, 0, 0, 0),
+                                              child: TextFormField(
+                                                controller:
+                                                    fieldTextEntregaController,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  'fieldTextEntregaController',
+                                                  Duration(milliseconds: 2000),
+                                                  () => setState(() {}),
+                                                ),
+                                                autofocus: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'evdkfaa3' /* Endereço de Entrega */,
+                                                  ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'afnmhxub' /* Endereço de Entrega */,
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0xFF757575),
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0xFF757575),
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
+                                        ],
                                       ),
                                     ),
                                     Text(
@@ -523,6 +618,8 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 18),
                                       child: FlutterFlowDropDown(
+                                        initialOption: dropDownFreteValue ??=
+                                            'Grátis',
                                         options: [
                                           FFLocalizations.of(context).getText(
                                             'prdl7idb' /* Grátis */,
