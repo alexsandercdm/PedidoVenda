@@ -42,7 +42,9 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
           },
         ),
         title: Text(
-          'Produtos',
+          FFLocalizations.of(context).getText(
+            'v8tnusbd' /* Produtos */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
@@ -78,7 +80,14 @@ class _ProdutosWidgetState extends State<ProdutosWidget> {
       ),
       drawer: Drawer(
         elevation: 16,
-        child: MenuWidget(),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).primaryBackground,
+          ),
+          child: MenuWidget(),
+        ),
       ),
       body: SafeArea(
         child: GestureDetector(

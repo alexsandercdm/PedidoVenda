@@ -43,7 +43,9 @@ class _ClientesWidgetState extends State<ClientesWidget> {
           },
         ),
         title: Text(
-          'Clientes',
+          FFLocalizations.of(context).getText(
+            'ks2vqsu8' /* Clientes */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
@@ -88,7 +90,14 @@ class _ClientesWidgetState extends State<ClientesWidget> {
       ),
       drawer: Drawer(
         elevation: 16,
-        child: MenuWidget(),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).primaryBackground,
+          ),
+          child: MenuWidget(),
+        ),
       ),
       body: SafeArea(
         child: GestureDetector(

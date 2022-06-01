@@ -38,7 +38,9 @@ class _HomeWidgetState extends State<HomeWidget> {
           },
         ),
         title: Text(
-          'Página Inicial VSCODE',
+          FFLocalizations.of(context).getText(
+            'e1hc3j8k' /* Página Inicial */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
@@ -51,28 +53,45 @@ class _HomeWidgetState extends State<HomeWidget> {
       ),
       drawer: Drawer(
         elevation: 16,
-        child: MenuWidget(),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).primaryBackground,
+          ),
+          child: MenuWidget(),
+        ),
       ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      '2zub5iuf' /* Seja Bem-Vindo! */,
-                    ),
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).bodyText1,
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              '2zub5iuf' /* Seja Bem-Vindo! */,
+                            ),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                ],
               ),
             ],
           ),
