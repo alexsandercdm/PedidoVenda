@@ -1260,6 +1260,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Pedidos',
       'en': '',
     },
+    'cihz0oip': {
+      'pt': 'Sair',
+      'en': '',
+    },
   },
   // Miscellaneous
   {

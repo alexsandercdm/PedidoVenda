@@ -1,9 +1,11 @@
+import '../auth/auth_util.dart';
 import '../clientes/clientes_widget.dart';
 import '../clientes_cadastro/clientes_cadastro_widget.dart';
 import '../empresas/empresas_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../login/login_widget.dart';
 import '../main.dart';
 import '../produtos/produtos_widget.dart';
 import 'package:flutter/material.dart';
@@ -378,6 +380,35 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                   title: Text(
                     FFLocalizations.of(context).getText(
                       '7vrehl28' /* Pedidos */,
+                    ),
+                    style: FlutterFlowTheme.of(context).title3.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 16,
+                        ),
+                  ),
+                  tileColor: Color(0xFFF5F5F5),
+                  dense: false,
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await signOut();
+                  await Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginWidget(),
+                    ),
+                    (r) => false,
+                  );
+                },
+                child: ListTile(
+                  leading: Icon(
+                    Icons.logout,
+                    color: FlutterFlowTheme.of(context).textButton,
+                  ),
+                  title: Text(
+                    FFLocalizations.of(context).getText(
+                      'cihz0oip' /* Sair */,
                     ),
                     style: FlutterFlowTheme.of(context).title3.override(
                           fontFamily: 'Poppins',
