@@ -72,15 +72,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Home
   {
     'e1hc3j8k': {
-      'pt': 'Página Inicial',
-      'en': '',
+      'pt': 'Página Inicial - PV',
+      'en': 'Home Page - PV',
     },
     '2zub5iuf': {
       'pt': 'Seja Bem-Vindo!',
-      'en': '',
+      'en': 'Welcome',
     },
     'pjgmgor0': {
-      'pt': 'Inicial',
+      'pt': 'Início',
       'en': 'Home',
     },
   },
