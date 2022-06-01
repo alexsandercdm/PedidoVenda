@@ -2,6 +2,7 @@ import '../components/menu_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +22,7 @@ class _HomeWidgetState extends State<HomeWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -47,7 +48,33 @@ class _HomeWidgetState extends State<HomeWidget> {
                 fontSize: 22,
               ),
         ),
-        actions: [],
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 5, 0),
+            child: InkWell(
+              onTap: () async {
+                if (Theme.of(context).brightness == Brightness.dark) {
+                  setDarkModeSetting(context, ThemeMode.light);
+                  return;
+                } else {
+                  setDarkModeSetting(context, ThemeMode.dark);
+                  return;
+                }
+              },
+              child: Container(
+                width: 50,
+                height: 50,
+                child: custom_widgets.SwitchMinimal(
+                  width: 50,
+                  height: 50,
+                  size: 50.0,
+                  onColor: FlutterFlowTheme.of(context).secondaryText,
+                  offColor: Color(0xFF3F51B5),
+                ),
+              ),
+            ),
+          ),
+        ],
         centerTitle: false,
         elevation: 3,
       ),

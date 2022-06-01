@@ -2,7 +2,7 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home/home_widget.dart';
+import '../main.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -101,7 +101,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    FlutterFlowTheme.of(context).primaryColor,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(5),
@@ -109,7 +109,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    FlutterFlowTheme.of(context).primaryColor,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(5),
@@ -140,7 +140,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    FlutterFlowTheme.of(context).primaryColor,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(5),
@@ -148,7 +148,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    FlutterFlowTheme.of(context).primaryColor,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(5),
@@ -184,7 +184,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                           await Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomeWidget(),
+                              builder: (context) =>
+                                  NavBarPage(initialPage: 'Home'),
                             ),
                             (r) => false,
                           );
@@ -200,7 +201,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               .subtitle2
                               .override(
                                 fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.of(context).textButton,
+                                color: FlutterFlowTheme.of(context).primaryText,
                               ),
                           borderSide: BorderSide(
                             color: Colors.transparent,

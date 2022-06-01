@@ -4,8 +4,7 @@ import '../empresas/empresas_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../home/home_widget.dart';
-import '../pedidos/pedidos_widget.dart';
+import '../main.dart';
 import '../produtos/produtos_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -135,13 +134,14 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       type: PageTransitionType.rightToLeft,
                       duration: Duration(milliseconds: 100),
                       reverseDuration: Duration(milliseconds: 100),
-                      child: HomeWidget(),
+                      child: NavBarPage(initialPage: 'Home'),
                     ),
                   );
                 },
                 child: ListTile(
                   leading: Icon(
                     Icons.home_outlined,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
                     FFLocalizations.of(context).getText(
@@ -171,6 +171,7 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                 child: ListTile(
                   leading: Icon(
                     Icons.business_rounded,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
                     FFLocalizations.of(context).getText(
@@ -198,6 +199,7 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                 child: ListTile(
                   leading: Icon(
                     Icons.account_circle_outlined,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
                     FFLocalizations.of(context).getText(
@@ -297,6 +299,7 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                 child: ListTile(
                   leading: Icon(
                     Icons.local_offer_outlined,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
                     FFLocalizations.of(context).getText(
@@ -363,13 +366,14 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       type: PageTransitionType.rightToLeft,
                       duration: Duration(milliseconds: 100),
                       reverseDuration: Duration(milliseconds: 100),
-                      child: PedidosWidget(),
+                      child: NavBarPage(initialPage: 'Pedidos'),
                     ),
                   );
                 },
                 child: ListTile(
                   leading: Icon(
                     Icons.shopping_bag_outlined,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
                     FFLocalizations.of(context).getText(

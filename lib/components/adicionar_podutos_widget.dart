@@ -51,7 +51,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: FlutterFlowTheme.of(context).primaryBackground,
           boxShadow: [
             BoxShadow(
               blurRadius: 4,
@@ -90,24 +90,14 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                 child: Text(
                   widget.produto.productName,
-                  style: FlutterFlowTheme.of(context).title3.override(
-                        fontFamily: 'Outfit',
-                        color: Color(0xFF14181B),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
+                  style: FlutterFlowTheme.of(context).title3,
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                 child: Text(
                   widget.produto.descrition,
-                  style: FlutterFlowTheme.of(context).bodyText2.override(
-                        fontFamily: 'Roboto Mono',
-                        color: Color(0xFF57636C),
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal,
-                      ),
+                  style: FlutterFlowTheme.of(context).bodyText1,
                 ),
               ),
               Divider(
@@ -143,9 +133,10 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                         final containerUnidadeRecord = snapshot.data;
                         return Container(
                           width: double.infinity,
-                          height: 60,
+                          height: 70,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
                               color: Color(0xFFF1F4F8),
@@ -176,10 +167,10 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Roboto Mono',
-                                                color: Color(0xFF14181B),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                               ),
                                         ),
                                         Expanded(
@@ -192,16 +183,16 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                                   .getText(
                                                 'th3jsfc8' /* Unidade de venda do item */,
                                               ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText2
-                                                  .override(
-                                                    fontFamily: 'Roboto Mono',
-                                                    color: Color(0xFF57636C),
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
                                             ),
                                           ),
                                         ),
@@ -212,14 +203,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                 Text(
                                   containerUnidadeRecord.descripritionUnity,
                                   textAlign: TextAlign.end,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Roboto Mono',
-                                        color: Color(0xFF14181B),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.normal,
-                                      ),
+                                  style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                               ],
                             ),
@@ -232,9 +216,9 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                     child: Container(
                       width: double.infinity,
-                      height: 60,
+                      height: 70,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: Color(0xFFF1F4F8),
@@ -262,10 +246,9 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Roboto Mono',
-                                            color: Color(0xFF14181B),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
                                     ),
                                     Expanded(
@@ -277,13 +260,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                             'r6rblpcs' /* Quantidade de Itens na venda */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Roboto Mono',
-                                                color: Color(0xFF57636C),
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.normal,
-                                              ),
+                                              .bodyText1,
                                         ),
                                       ),
                                     ),
@@ -355,9 +332,9 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                     child: Container(
                       width: double.infinity,
-                      height: 60,
+                      height: 70,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: Color(0xFFF1F4F8),
@@ -385,10 +362,9 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Roboto Mono',
-                                            color: Color(0xFF14181B),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
                                     ),
                                     Expanded(
@@ -400,13 +376,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                             'x26tmth0' /* Desconto Total da Venda % */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Roboto Mono',
-                                                color: Color(0xFF57636C),
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.normal,
-                                              ),
+                                              .bodyText1,
                                         ),
                                       ),
                                     ),
@@ -517,13 +487,14 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                         ),
                         Text(
                           functions.maskPrecoLiquido(widget.produto.salePrice),
-                          style:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Roboto Mono',
-                                    color: Color(0xFF14181B),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: 'Roboto Mono',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
                         ),
                       ],
                     ),
@@ -550,13 +521,14 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                           functions.maskPrecoLiquido(functions.calcPrecoLiquido(
                               widget.produto.salePrice, FFAppState().qtd)),
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Roboto Mono',
-                                    color: Color(0xFF14181B),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: 'Roboto Mono',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
                         ),
                       ],
                     ),
@@ -586,13 +558,14 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                             decimalType: DecimalType.commaDecimal,
                             currency: 'R\$ ',
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Roboto Mono',
-                                    color: Color(0xFF14181B),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: 'Roboto Mono',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
                         ),
                       ],
                     ),
@@ -642,7 +615,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                               FFAppState().desconto)),
                           style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Outfit',
-                                color: Color(0xFF14181B),
+                                color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 34,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -705,13 +678,11 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 50,
-                        color: FlutterFlowTheme.of(context).textButton,
+                        color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
                             FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Roboto Mono',
+                                  fontFamily: 'Poppins',
                                   color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
                                 ),
                         elevation: 2,
                         borderSide: BorderSide(

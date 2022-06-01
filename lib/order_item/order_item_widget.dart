@@ -53,7 +53,10 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
     fieldTextCobrancaController = TextEditingController();
     fieldTextEntregaController = TextEditingController();
     fieldTextValorFreteController = TextEditingController();
-    obsInternaController = TextEditingController(text: ' ');
+    obsInternaController = TextEditingController(
+        text: FFLocalizations.of(context).getText(
+      'dwth0dn7' /*   */,
+    ));
     textFieldSearchController = TextEditingController();
   }
 
@@ -62,7 +65,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -194,16 +197,23 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                     .bodyText1
                                                     .override(
                                                       fontFamily: 'Poppins',
-                                                      color: Color(0xFF212121),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                     ),
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
                                               '9c3xd6cs' /* Selecione um Cliente */,
                                             ),
-                                            fillColor: Colors.white,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
                                             elevation: 2,
-                                            borderColor: Color(0xFF757575),
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .border,
                                             borderWidth: 1,
                                             borderRadius: 5,
                                             margin:
@@ -260,16 +270,23 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                     .bodyText1
                                                     .override(
                                                       fontFamily: 'Poppins',
-                                                      color: Color(0xFF212121),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                     ),
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
                                               'ei57hzku' /* Seleciona uma Empresa */,
                                             ),
-                                            fillColor: Colors.white,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
                                             elevation: 2,
-                                            borderColor: Color(0xFF757575),
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .border,
                                             borderWidth: 1,
                                             borderRadius: 5,
                                             margin:
@@ -354,7 +371,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Color(0xFF757575),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .border,
                                                     width: 1,
                                                   ),
                                                   borderRadius:
@@ -368,7 +387,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Color(0xFF757575),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .border,
                                                     width: 1,
                                                   ),
                                                   borderRadius:
@@ -405,7 +426,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           FFLocalizations.of(context).getText(
                                             'sbs4v1ky' /* Pedido */,
                                           )
-                                        ].toList(),
+                                        ],
                                         onChanged: (val) => setState(() =>
                                             dropDownTipoPedidoValue = val),
                                         height: 50,
@@ -413,15 +434,19 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
-                                              color: Color(0xFF212121),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           'eki7mggd' /* Tipo de Pedido */,
                                         ),
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         elevation: 2,
-                                        borderColor: Color(0xFF757575),
+                                        borderColor:
+                                            FlutterFlowTheme.of(context).border,
                                         borderWidth: 1,
                                         borderRadius: 5,
                                         margin: EdgeInsetsDirectional.fromSTEB(
@@ -450,7 +475,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           FFLocalizations.of(context).getText(
                                             'by270219' /* Cartão de Crédido */,
                                           )
-                                        ].toList(),
+                                        ],
                                         onChanged: (val) => setState(
                                             () => dropDownPagamentoValue = val),
                                         height: 50,
@@ -458,15 +483,19 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
-                                              color: Color(0xFF212121),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           'e607k3ze' /* Condições de Pagamento */,
                                         ),
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         elevation: 2,
-                                        borderColor: Color(0xFF757575),
+                                        borderColor:
+                                            FlutterFlowTheme.of(context).border,
                                         borderWidth: 1,
                                         borderRadius: 5,
                                         margin: EdgeInsetsDirectional.fromSTEB(
@@ -511,7 +540,10 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Color(0xFF757575),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
                                                       width: 1,
                                                     ),
                                                     borderRadius:
@@ -525,7 +557,10 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                   focusedBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Color(0xFF757575),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
                                                       width: 1,
                                                     ),
                                                     borderRadius:
@@ -572,7 +607,10 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Color(0xFF757575),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
                                                       width: 1,
                                                     ),
                                                     borderRadius:
@@ -586,7 +624,10 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                   focusedBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Color(0xFF757575),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
                                                       width: 1,
                                                     ),
                                                     borderRadius:
@@ -619,12 +660,14 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           0, 0, 0, 18),
                                       child: FlutterFlowDropDown(
                                         initialOption: dropDownFreteValue ??=
-                                            'Grátis',
+                                            FFLocalizations.of(context).getText(
+                                          '4brhhlpg' /* Grátis */,
+                                        ),
                                         options: [
                                           FFLocalizations.of(context).getText(
                                             'prdl7idb' /* Grátis */,
                                           )
-                                        ].toList(),
+                                        ],
                                         onChanged: (val) => setState(
                                             () => dropDownFreteValue = val),
                                         height: 50,
@@ -632,15 +675,19 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
-                                              color: Color(0xFF212121),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           'aae5qs89' /* Frete */,
                                         ),
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         elevation: 2,
-                                        borderColor: Color(0xFF757575),
+                                        borderColor:
+                                            FlutterFlowTheme.of(context).border,
                                         borderWidth: 1,
                                         borderRadius: 5,
                                         margin: EdgeInsetsDirectional.fromSTEB(
@@ -672,7 +719,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF757575),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -683,7 +732,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF757575),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -724,7 +775,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF757575),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -735,7 +788,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF757575),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -967,220 +1022,233 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         itemBuilder: (context, productIndex) {
                                           final productItem =
                                               product[productIndex];
-                                          return InkWell(
-                                            onTap: () async {
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                context: context,
-                                                builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
-                                                    child:
-                                                        AdicionarPodutosWidget(
-                                                      produto: productItem,
-                                                      order:
-                                                          widget.recordPedido,
-                                                      unity: productItem.unit,
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                              setState(
-                                                  () => FFAppState().qtd = 1);
-                                              setState(() =>
-                                                  FFAppState().desconto = 0.0);
-                                              await actions.calcDesconto(
-                                                FFAppState().desconto,
-                                                productItem.salePrice,
-                                              );
-                                            },
-                                            child: Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: 100,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    blurRadius: 3,
-                                                    color: Color(0x411D2429),
-                                                    offset: Offset(0, 1),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(16),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(8, 8, 8, 8),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8, 8, 8, 8),
+                                            child: InkWell(
+                                              onTap: () async {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 1, 1, 1),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12),
-                                                        child: Image.network(
-                                                          productItem
-                                                              .imgPrincipal,
-                                                          width: 70,
-                                                          height: 100,
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                                          MediaQuery.of(context)
+                                                              .viewInsets,
+                                                      child:
+                                                          AdicionarPodutosWidget(
+                                                        produto: productItem,
+                                                        order:
+                                                            widget.recordPedido,
+                                                        unity: productItem.unit,
                                                       ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
+                                                    );
+                                                  },
+                                                );
+                                                setState(
+                                                    () => FFAppState().qtd = 1);
+                                                setState(() => FFAppState()
+                                                    .desconto = 0.0);
+                                                await actions.calcDesconto(
+                                                  FFAppState().desconto,
+                                                  productItem.salePrice,
+                                                );
+                                              },
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                height: 100,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 3,
+                                                      color: Color(0x411D2429),
+                                                      offset: Offset(0, 1),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(16),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(8, 8, 8, 8),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    8, 8, 4, 0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              productItem
-                                                                  .productName,
+                                                                    0, 1, 1, 1),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(12),
+                                                          child: Image.network(
+                                                            productItem
+                                                                .imgPrincipal,
+                                                            width: 70,
+                                                            height: 100,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(8,
+                                                                      8, 4, 0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                productItem
+                                                                    .productName,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subtitle1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend Deca',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                    ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          4,
+                                                                          8,
+                                                                          0),
+                                                                  child:
+                                                                      AutoSizeText(
+                                                                    productItem
+                                                                        .descrition
+                                                                        .maybeHandleOverflow(
+                                                                      maxChars:
+                                                                          70,
+                                                                      replacement:
+                                                                          '…',
+                                                                    ),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Lexend Deca',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          fontSize:
+                                                                              14,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        4,
+                                                                        0,
+                                                                        0),
+                                                            child: Icon(
+                                                              Icons
+                                                                  .chevron_right_rounded,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        4,
+                                                                        8),
+                                                            child: Text(
+                                                              formatNumber(
+                                                                productItem
+                                                                    .salePrice,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .decimal,
+                                                                decimalType:
+                                                                    DecimalType
+                                                                        .commaDecimal,
+                                                                currency:
+                                                                    'R\$ ',
+                                                              ),
+                                                              textAlign:
+                                                                  TextAlign.end,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .subtitle1
+                                                                  .bodyText1
                                                                   .override(
                                                                     fontFamily:
                                                                         'Lexend Deca',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryText,
+                                                                        .textButton,
                                                                     fontSize:
-                                                                        20,
+                                                                        14,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
                                                                   ),
                                                             ),
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            4,
-                                                                            8,
-                                                                            0),
-                                                                child:
-                                                                    AutoSizeText(
-                                                                  productItem
-                                                                      .descrition
-                                                                      .maybeHandleOverflow(
-                                                                    maxChars:
-                                                                        70,
-                                                                    replacement:
-                                                                        '…',
-                                                                  ),
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Lexend Deca',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                        fontSize:
-                                                                            14,
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      4, 0, 0),
-                                                          child: Icon(
-                                                            Icons
-                                                                .chevron_right_rounded,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 24,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 4, 8),
-                                                          child: Text(
-                                                            formatNumber(
-                                                              productItem
-                                                                  .salePrice,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .decimal,
-                                                              decimalType:
-                                                                  DecimalType
-                                                                      .commaDecimal,
-                                                              currency: 'R\$ ',
-                                                            ),
-                                                            textAlign:
-                                                                TextAlign.end,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend Deca',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .textButton,
-                                                                  fontSize: 14,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -1347,13 +1415,17 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                 )}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .subtitle2,
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
                                               ),
-                                              trailing: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color: Color(0xFF303030),
-                                                size: 20,
-                                              ),
+                                              tileColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               dense: false,
                                             ),
                                           );
@@ -1474,8 +1546,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -1522,8 +1595,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -1570,8 +1644,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -1636,8 +1711,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                         .title1
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 24,
                                                           fontWeight:
                                                               FontWeight.w600,
