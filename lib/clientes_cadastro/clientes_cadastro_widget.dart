@@ -78,7 +78,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -108,6 +108,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
         centerTitle: false,
         elevation: 3,
       ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Column(
@@ -194,7 +195,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .border,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -203,7 +204,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .border,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -238,7 +239,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .border,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -247,7 +248,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .border,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -282,7 +283,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .border,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -291,7 +292,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .border,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -326,7 +327,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .border,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -335,7 +336,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .border,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -359,7 +360,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                         FFLocalizations.of(context).getText(
                                           'uwumpalp' /* PESSOA JURÍDICA */,
                                         )
-                                      ].toList(),
+                                      ],
                                       onChanged: (val) =>
                                           setState(() => typePersonValue = val),
                                       width: 180,
@@ -368,15 +369,18 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
-                                            color: Colors.black,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
                                         '4jf4qpsn' /* Selecione o tipo de Cliente */,
                                       ),
-                                      fillColor: Colors.white,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
                                       elevation: 2,
-                                      borderColor: Color(0xFF757575),
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).border,
                                       borderWidth: 1,
                                       borderRadius: 5,
                                       margin: EdgeInsetsDirectional.fromSTEB(
@@ -460,7 +464,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryText,
+                                                              .border,
                                                           width: 1,
                                                         ),
                                                         borderRadius:
@@ -472,7 +476,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryText,
+                                                              .border,
                                                           width: 1,
                                                         ),
                                                         borderRadius:
@@ -579,7 +583,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryText,
+                                                              .border,
                                                           width: 1,
                                                         ),
                                                         borderRadius:
@@ -591,7 +595,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryText,
+                                                              .border,
                                                           width: 1,
                                                         ),
                                                         borderRadius:
@@ -667,7 +671,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                     .getText(
                                                   'r6zyhhj9' /* LUCRO REAL */,
                                                 )
-                                              ].toList(),
+                                              ],
                                               onChanged: (val) => setState(() =>
                                                   regimeTributarioValue = val),
                                               width: 180,
@@ -677,16 +681,23 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                       .bodyText1
                                                       .override(
                                                         fontFamily: 'Poppins',
-                                                        color: Colors.black,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                       ),
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
                                                 '6winwug3' /* Selecione o Regime Tributário */,
                                               ),
-                                              fillColor: Colors.white,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
                                               elevation: 2,
-                                              borderColor: Color(0xFF757575),
+                                              borderColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               borderWidth: 1,
                                               borderRadius: 5,
                                               margin: EdgeInsetsDirectional
@@ -720,7 +731,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                     .getText(
                                                   'd6yhm4ee' /* SOCIEDADE SIMPLES LIMITADA */,
                                                 )
-                                              ].toList(),
+                                              ],
                                               onChanged: (val) => setState(() =>
                                                   naturezaJuridicaValue = val),
                                               width: 180,
@@ -730,16 +741,23 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                       .bodyText1
                                                       .override(
                                                         fontFamily: 'Poppins',
-                                                        color: Colors.black,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                       ),
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
                                                 '9am3znj6' /* Selecione a Natureza Jurídica */,
                                               ),
-                                              fillColor: Colors.white,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
                                               elevation: 2,
-                                              borderColor: Color(0xFF757575),
+                                              borderColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               borderWidth: 1,
                                               borderRadius: 5,
                                               margin: EdgeInsetsDirectional
@@ -767,7 +785,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -777,7 +795,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -846,7 +864,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryText,
+                                                        .border,
                                                     width: 1,
                                                   ),
                                                   borderRadius:
@@ -857,7 +875,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryText,
+                                                        .border,
                                                     width: 1,
                                                   ),
                                                   borderRadius:
@@ -889,7 +907,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -899,7 +917,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -976,7 +994,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -986,7 +1004,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -1028,7 +1046,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -1038,7 +1056,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -1079,7 +1097,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -1089,7 +1107,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -1160,7 +1178,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:
@@ -1170,7 +1188,7 @@ class _ClientesCadastroWidgetState extends State<ClientesCadastroWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .border,
                                                   width: 1,
                                                 ),
                                                 borderRadius:

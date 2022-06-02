@@ -26,7 +26,7 @@ class _PedidosWidgetState extends State<PedidosWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -146,7 +146,8 @@ class _PedidosWidgetState extends State<PedidosWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: Color(0xFFF5F5F5),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             child: Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
@@ -160,8 +161,8 @@ class _PedidosWidgetState extends State<PedidosWidget> {
                                     children: [
                                       Text(
                                         listViewPedidosRecord.typeDcument,
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle1,
+                                        style:
+                                            FlutterFlowTheme.of(context).title3,
                                       ),
                                       Text(
                                         formatNumber(
@@ -204,7 +205,13 @@ class _PedidosWidgetState extends State<PedidosWidget> {
                                           return Text(
                                             textEmpresasRecord.socialReason,
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle2,
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
                                           );
                                         },
                                       ),
@@ -278,8 +285,7 @@ class _PedidosWidgetState extends State<PedidosWidget> {
                                               textPedidoItemsRecordList =
                                               snapshot.data;
                                           return Text(
-                                            textPedidoItemsRecordList.length
-                                                .toString(),
+                                            '${textPedidoItemsRecordList.length.toString()} Item(s)',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1,
                                           );
