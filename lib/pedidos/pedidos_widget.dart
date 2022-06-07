@@ -1,14 +1,14 @@
-import '../auth/auth_util.dart';
+// import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/menu_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../order_item/order_item_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 class PedidosWidget extends StatefulWidget {
   const PedidosWidget({Key key}) : super(key: key);

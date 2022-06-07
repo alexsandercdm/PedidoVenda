@@ -41,13 +41,13 @@ class _SwitchMinimalState extends State<SwitchMinimal> {
       value: Theme.of(context).brightness == Brightness.dark,
       onColor: widget.onColor,
       offColor: widget.offColor,
-      //onChange: (value) async {
-      //  if (Theme.of(context).brightness == Brightness.dark) {
-      //    setDarkModeSetting(context, ThemeMode.light);
-      //  } else {
-      //    setDarkModeSetting(context, ThemeMode.dark);
-      //  }
-      //},
+      onChange: (value) async {
+       if (Theme.of(context).brightness == Brightness.dark) {
+         setDarkModeSetting(context, ThemeMode.light);
+       } else {
+         setDarkModeSetting(context, ThemeMode.dark);
+       }
+      },
     );
   }
 }

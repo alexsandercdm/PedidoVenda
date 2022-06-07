@@ -1,12 +1,11 @@
 import '../components/menu_widget.dart';
+import '../custom_code/widgets/switch_minimal.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key key}) : super(key: key);
@@ -49,7 +48,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                 fontSize: 22,
               ),
         ),
-        actions: [],
+        actions: [
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 14.0, horizontal: 18.0),
+            child: SwitchMinimal(
+              width: 50.0,
+              height: 30.0,
+              size: 60.0,
+              onColor: Colors.amber,
+              offColor: Colors.blueGrey,
+            ),
+          ),
+        ],
         centerTitle: false,
         elevation: 3,
       ),
