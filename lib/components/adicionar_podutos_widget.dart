@@ -515,6 +515,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                     child: custom_widgets.FieldCounter(
                                       width: 200,
                                       height: 60,
+                                      produto: widget.produto,
                                     ),
                                   ),
                                 ],
