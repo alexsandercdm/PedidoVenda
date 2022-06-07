@@ -472,7 +472,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                               ),
                             );
                           }
-                          final containerUnidadeRecord = snapshot.data;
+                          // final containerUnidadeRecord = snapshot.data;
                           return Container(
                             width: double.infinity,
                             height: 70,
