@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../custom_code/actions/index.dart' as actions;
+import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -448,6 +449,77 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                             ],
                           ),
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                      child: StreamBuilder<UnidadeRecord>(
+                        stream: UnidadeRecord.getDocument(widget.produto.unit),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: SpinKitRipple(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
+                                  size: 50,
+                                ),
+                              ),
+                            );
+                          }
+                          final containerUnidadeRecord = snapshot.data;
+                          return Container(
+                            width: double.infinity,
+                            height: 70,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Color(0xFFF1F4F8),
+                                width: 2,
+                              ),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12, 0, 0, 0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        '9qtpor9z' /* Unidade */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle2
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 200,
+                                    height: 60,
+                                    child: custom_widgets.FieldCounter(
+                                      width: 200,
+                                      height: 60,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],

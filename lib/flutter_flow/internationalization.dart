@@ -1197,6 +1197,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '0',
       'en': '',
     },
+    '9qtpor9z': {
+      'pt': 'Unidade',
+      'en': '',
+    },
     'utiidicw': {
       'pt': 'Resumo',
       'en': '',
