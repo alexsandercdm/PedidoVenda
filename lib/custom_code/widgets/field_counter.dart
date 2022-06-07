@@ -4,7 +4,8 @@ import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
 import '../actions/index.dart'; // Imports custom actions
-import '../../flutter_flow/custom_functions.dart'; // Imports custom functions
+import '../../flutter_flow/custom_functions.dart'
+    as functions; // Imports custom functions
 import 'package:flutter/material.dart';
 import '../actions/index.dart' as actions;
 import 'package:my_first_project/app_state.dart';
@@ -15,18 +16,19 @@ class FieldCounter extends StatefulWidget {
     Key key,
     this.width,
     this.height,
+    this.produto,
   }) : super(key: key);
 
   final double width;
   final double height;
+  final ProdutoRecord produto;
 
   @override
   _FieldCounterState createState() => _FieldCounterState();
 }
 
 class _FieldCounterState extends State<FieldCounter> {
-  var _counter = FFAppState().qtd ;
-  
+  var _counter = FFAppState().qtd;
 
   final TextEditingController _controller =
       TextEditingController(text: 1.toString());
@@ -36,6 +38,12 @@ class _FieldCounterState extends State<FieldCounter> {
     setState(() {
       FFAppState().qtd = _counter;
     });
+    actions.calcDesconto(
+      double.parse(_controller.text),
+      functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd),
+    );
+    setState(() => FFAppState().desconto =
+        functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd));
     _controller.text = _counter.toString();
   }
 
@@ -44,6 +52,12 @@ class _FieldCounterState extends State<FieldCounter> {
     setState(() {
       FFAppState().qtd = _counter;
     });
+    actions.calcDesconto(
+      double.parse(_controller.text),
+      functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd),
+    );
+    setState(() => FFAppState().desconto =
+        functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd));
     _controller.text = _counter.toString();
   }
 
@@ -52,6 +66,14 @@ class _FieldCounterState extends State<FieldCounter> {
       FFAppState().qtd = _counter;
     });
     _counter = int.parse(_controller.text);
+    actions.calcDesconto(
+      double.parse(_controller.text),
+      functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd),
+    );
+    setState(() => FFAppState().desconto =
+        functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd));
+    _controller.text = _counter.toString();
+    
   }
 
   @override
