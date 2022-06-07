@@ -71,12 +71,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    '2zub5iuf': {
-      'pt': 'Seja Bem-Vindo!',
+    'e1hc3j8k': {
+      'pt': 'Página Inicial',
       'en': '',
     },
-    'nb6zxmvv': {
-      'pt': 'Página Inicial',
+    '2zub5iuf': {
+      'pt': 'Seja Bem-Vindo!',
       'en': '',
     },
     'pjgmgor0': {
@@ -86,7 +86,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Empresas
   {
-    'd8tyidvl': {
+    'txsbwjaz': {
       'pt': 'Page Title',
       'en': '',
     },
@@ -288,7 +288,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Clientes
   {
-    'va4jp67a': {
+    'ks2vqsu8': {
       'pt': 'Clientes',
       'en': '',
     },
@@ -511,7 +511,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Salvar',
       'en': '',
     },
-    'q1gjt8r7': {
+    'ukq0euhe': {
       'pt': 'Cadastro de Cliente',
       'en': '',
     },
@@ -522,7 +522,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Produtos
   {
-    'iuq9uj7z': {
+    'v8tnusbd': {
       'pt': 'Produtos',
       'en': '',
     },
@@ -824,7 +824,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Salvar',
       'en': '',
     },
-    'ymfv010v': {
+    'kg0u7giz': {
       'pt': 'Cadasto de Produtos',
       'en': '',
     },
@@ -835,7 +835,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Pedidos
   {
-    's63pg1tz': {
+    'qlkywdta': {
       'pt': 'Pedidos',
       'en': '',
     },
@@ -934,6 +934,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Frete',
       'en': '',
     },
+    '4brhhlpg': {
+      'pt': 'Grátis',
+      'en': '',
+    },
     'prdl7idb': {
       'pt': 'Grátis',
       'en': '',
@@ -956,6 +960,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rreeq982': {
       'pt': 'Observações Interna',
+      'en': '',
+    },
+    'dwth0dn7': {
+      'pt': ' ',
       'en': '',
     },
     '2uv0mqtl': {
@@ -1034,7 +1042,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Fechar Pedido',
       'en': '',
     },
-    'uv5b2ugf': {
+    '2871i6zp': {
       'pt': 'Page Title',
       'en': '',
     },
@@ -1189,6 +1197,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '0',
       'en': '',
     },
+    '9qtpor9z': {
+      'pt': 'Unidade',
+      'en': '',
+    },
     'utiidicw': {
       'pt': 'Resumo',
       'en': '',
@@ -1216,40 +1228,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Menu
   {
-    'tcutck3s': {
+    'kl0lzkbz': {
       'pt': 'Menu',
       'en': '',
     },
-    '67gskevq': {
+    '7wpkscbl': {
       'pt': 'Página Inicial',
       'en': '',
     },
-    '08bpfzhl': {
+    'ahg4sggp': {
       'pt': 'Empresas',
       'en': '',
     },
-    'dau2huhi': {
+    '4xi3xise': {
       'pt': 'Clientes',
       'en': '',
     },
-    'z5j8t8g0': {
+    'zrfvi4r4': {
       'pt': 'Carteira',
       'en': '',
     },
-    'rmn2y2tx': {
+    '3cvkbz19': {
       'pt': 'Cadastro de Clientes',
       'en': '',
     },
-    'vt6cfgh3': {
+    'yvthh10v': {
       'pt': 'Produtos',
       'en': '',
     },
-    '5tivqo2u': {
+    '7ahooc7h': {
       'pt': 'Produtos',
       'en': '',
     },
-    'd5i5nnuv': {
+    '7vrehl28': {
       'pt': 'Pedidos',
+      'en': '',
+    },
+    'cihz0oip': {
+      'pt': 'Sair',
       'en': '',
     },
   },

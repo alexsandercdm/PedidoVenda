@@ -1,11 +1,12 @@
+import '../auth/auth_util.dart';
 import '../clientes/clientes_widget.dart';
 import '../clientes_cadastro/clientes_cadastro_widget.dart';
 import '../empresas/empresas_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../home/home_widget.dart';
-import '../pedidos/pedidos_widget.dart';
+import '../login/login_widget.dart';
+import '../main.dart';
 import '../produtos/produtos_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -37,6 +38,20 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
         opacity: 1,
       ),
     ),
+    'listViewOnActionTriggerAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      duration: 600,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
     'listViewOnPageLoadAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 300,
@@ -44,6 +59,20 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 50),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'listViewOnActionTriggerAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      duration: 600,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
         scale: 1,
         opacity: 0,
       ),
@@ -63,6 +92,11 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
       this,
     );
+    setupTriggerAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+      this,
+    );
   }
 
   @override
@@ -80,7 +114,9 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
           child: Text(
-            'Menu',
+            FFLocalizations.of(context).getText(
+              'kl0lzkbz' /* Menu */,
+            ),
             style: FlutterFlowTheme.of(context).bodyText1,
           ),
         ),
@@ -100,16 +136,19 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       type: PageTransitionType.rightToLeft,
                       duration: Duration(milliseconds: 100),
                       reverseDuration: Duration(milliseconds: 100),
-                      child: HomeWidget(),
+                      child: NavBarPage(initialPage: 'Home'),
                     ),
                   );
                 },
                 child: ListTile(
                   leading: Icon(
                     Icons.home_outlined,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
-                    'Página Inicial',
+                    FFLocalizations.of(context).getText(
+                      '7wpkscbl' /* Página Inicial */,
+                    ),
                     style: FlutterFlowTheme.of(context).title3.override(
                           fontFamily: 'Poppins',
                           fontSize: 16,
@@ -134,9 +173,12 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                 child: ListTile(
                   leading: Icon(
                     Icons.business_rounded,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
-                    'Empresas',
+                    FFLocalizations.of(context).getText(
+                      'ahg4sggp' /* Empresas */,
+                    ),
                     style: FlutterFlowTheme.of(context).title3.override(
                           fontFamily: 'Poppins',
                           fontSize: 16,
@@ -159,9 +201,12 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                 child: ListTile(
                   leading: Icon(
                     Icons.account_circle_outlined,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
-                    'Clientes',
+                    FFLocalizations.of(context).getText(
+                      '4xi3xise' /* Clientes */,
+                    ),
                     style: FlutterFlowTheme.of(context).title3.override(
                           fontFamily: 'Poppins',
                           fontSize: 16,
@@ -196,7 +241,9 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       },
                       child: ListTile(
                         title: Text(
-                          'Carteira',
+                          FFLocalizations.of(context).getText(
+                            'zrfvi4r4' /* Carteira */,
+                          ),
                           style: FlutterFlowTheme.of(context).title3.override(
                                 fontFamily: 'Poppins',
                                 fontSize: 14,
@@ -222,7 +269,9 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       },
                       child: ListTile(
                         title: Text(
-                          'Cadastro de Clientes',
+                          FFLocalizations.of(context).getText(
+                            '3cvkbz19' /* Cadastro de Clientes */,
+                          ),
                           style: FlutterFlowTheme.of(context).title3.override(
                                 fontFamily: 'Poppins',
                                 fontSize: 14,
@@ -235,7 +284,10 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       ),
                     ),
                   ],
-                ).animated([animationsMap['listViewOnPageLoadAnimation1']]),
+                ).animated([
+                  animationsMap['listViewOnPageLoadAnimation1'],
+                  animationsMap['listViewOnActionTriggerAnimation1']
+                ]),
               InkWell(
                 onTap: () async {
                   if ((FFAppState().menu) != 'Produtos') {
@@ -249,9 +301,12 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                 child: ListTile(
                   leading: Icon(
                     Icons.local_offer_outlined,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
-                    'Produtos',
+                    FFLocalizations.of(context).getText(
+                      'yvthh10v' /* Produtos */,
+                    ),
                     style: FlutterFlowTheme.of(context).title3.override(
                           fontFamily: 'Poppins',
                           fontSize: 16,
@@ -286,7 +341,9 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       },
                       child: ListTile(
                         title: Text(
-                          'Produtos',
+                          FFLocalizations.of(context).getText(
+                            '7ahooc7h' /* Produtos */,
+                          ),
                           style: FlutterFlowTheme.of(context).title3.override(
                                 fontFamily: 'Poppins',
                                 fontSize: 14,
@@ -299,7 +356,10 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       ),
                     ),
                   ],
-                ).animated([animationsMap['listViewOnPageLoadAnimation2']]),
+                ).animated([
+                  animationsMap['listViewOnPageLoadAnimation2'],
+                  animationsMap['listViewOnActionTriggerAnimation2']
+                ]),
               InkWell(
                 onTap: () async {
                   await Navigator.push(
@@ -308,16 +368,48 @@ class _MenuWidgetState extends State<MenuWidget> with TickerProviderStateMixin {
                       type: PageTransitionType.rightToLeft,
                       duration: Duration(milliseconds: 100),
                       reverseDuration: Duration(milliseconds: 100),
-                      child: PedidosWidget(),
+                      child: NavBarPage(initialPage: 'Pedidos'),
                     ),
                   );
                 },
                 child: ListTile(
                   leading: Icon(
                     Icons.shopping_bag_outlined,
+                    color: FlutterFlowTheme.of(context).textButton,
                   ),
                   title: Text(
-                    'Pedidos',
+                    FFLocalizations.of(context).getText(
+                      '7vrehl28' /* Pedidos */,
+                    ),
+                    style: FlutterFlowTheme.of(context).title3.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 16,
+                        ),
+                  ),
+                  tileColor: Color(0xFFF5F5F5),
+                  dense: false,
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await signOut();
+                  await Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginWidget(),
+                    ),
+                    (r) => false,
+                  );
+                },
+                child: ListTile(
+                  leading: Icon(
+                    Icons.logout,
+                    color: FlutterFlowTheme.of(context).textButton,
+                  ),
+                  title: Text(
+                    FFLocalizations.of(context).getText(
+                      'cihz0oip' /* Sair */,
+                    ),
                     style: FlutterFlowTheme.of(context).title3.override(
                           fontFamily: 'Poppins',
                           fontSize: 16,

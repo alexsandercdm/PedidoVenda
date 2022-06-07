@@ -51,10 +51,12 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
   void initState() {
     super.initState();
     fieldTextCobrancaController = TextEditingController();
-    fieldTextVendedorController = TextEditingController();
     fieldTextEntregaController = TextEditingController();
     fieldTextValorFreteController = TextEditingController();
-    obsInternaController = TextEditingController();
+    obsInternaController = TextEditingController(
+        text: FFLocalizations.of(context).getText(
+      'dwth0dn7' /*   */,
+    ));
     textFieldSearchController = TextEditingController();
   }
 
@@ -63,7 +65,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -80,7 +82,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
           },
         ),
         title: Text(
-          'Page Title',
+          FFLocalizations.of(context).getText(
+            '2871i6zp' /* Page Title */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
@@ -141,7 +145,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(9, 9, 9, 9),
                             child: Form(
                               key: formKey,
-                              autovalidateMode: AutovalidateMode.always,
+                              autovalidateMode: AutovalidateMode.disabled,
                               child: SingleChildScrollView(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -193,16 +197,23 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                     .bodyText1
                                                     .override(
                                                       fontFamily: 'Poppins',
-                                                      color: Color(0xFF212121),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                     ),
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
                                               '9c3xd6cs' /* Selecione um Cliente */,
                                             ),
-                                            fillColor: Colors.white,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
                                             elevation: 2,
-                                            borderColor: Color(0xFF757575),
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .border,
                                             borderWidth: 1,
                                             borderRadius: 5,
                                             margin:
@@ -259,16 +270,23 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                     .bodyText1
                                                     .override(
                                                       fontFamily: 'Poppins',
-                                                      color: Color(0xFF212121),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                     ),
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
                                               'ei57hzku' /* Seleciona uma Empresa */,
                                             ),
-                                            fillColor: Colors.white,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
                                             elevation: 2,
-                                            borderColor: Color(0xFF757575),
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .border,
                                             borderWidth: 1,
                                             borderRadius: 5,
                                             margin:
@@ -279,64 +297,117 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         },
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 18),
-                                      child: TextFormField(
-                                        controller: fieldTextVendedorController,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          'fieldTextVendedorController',
-                                          Duration(milliseconds: 2000),
-                                          () => setState(() {}),
-                                        ),
-                                        autofocus: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            'nd6mwr6y' /* Endereço de Cobrança */,
+                                    if ((dropDownClienteValue != null) &&
+                                        (dropDownClienteValue != ''))
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 0, 18),
+                                        child:
+                                            StreamBuilder<List<ClientesRecord>>(
+                                          stream: queryClientesRecord(
+                                            queryBuilder: (clientesRecord) =>
+                                                clientesRecord.where(
+                                                    'full_name',
+                                                    isEqualTo:
+                                                        dropDownClienteValue !=
+                                                                ''
+                                                            ? dropDownClienteValue
+                                                            : null),
+                                            singleRecord: true,
                                           ),
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            'yon8il12' /* Endereço de Cobrança */,
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              '2uv0mqtl' /* Field is required */,
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50,
+                                                  height: 50,
+                                                  child: SpinKitRipple(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryColor,
+                                                    size: 50,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<ClientesRecord>
+                                                fieldTextVendedorClientesRecordList =
+                                                snapshot.data;
+                                            final fieldTextVendedorClientesRecord =
+                                                fieldTextVendedorClientesRecordList
+                                                        .isNotEmpty
+                                                    ? fieldTextVendedorClientesRecordList
+                                                        .first
+                                                    : null;
+                                            return TextFormField(
+                                              controller:
+                                                  fieldTextVendedorController ??=
+                                                      TextEditingController(
+                                                text:
+                                                    fieldTextVendedorClientesRecord
+                                                        .addressIbge
+                                                        .toString(),
+                                              ),
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                'fieldTextVendedorController',
+                                                Duration(milliseconds: 2000),
+                                                () => setState(() {}),
+                                              ),
+                                              autofocus: true,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'nd6mwr6y' /* Endereço de Cobrança */,
+                                                ),
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'yon8il12' /* Endereço de Cobrança */,
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .border,
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(4.0),
+                                                    topRight:
+                                                        Radius.circular(4.0),
+                                                  ),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .border,
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(4.0),
+                                                    topRight:
+                                                        Radius.circular(4.0),
+                                                  ),
+                                                ),
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
                                             );
-                                          }
-
-                                          return null;
-                                        },
+                                          },
+                                        ),
                                       ),
-                                    ),
                                     Text(
                                       FFLocalizations.of(context).getText(
                                         'dcpfmblc' /* Tipo de Pedido */,
@@ -355,7 +426,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           FFLocalizations.of(context).getText(
                                             'sbs4v1ky' /* Pedido */,
                                           )
-                                        ].toList(),
+                                        ],
                                         onChanged: (val) => setState(() =>
                                             dropDownTipoPedidoValue = val),
                                         height: 50,
@@ -363,15 +434,19 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
-                                              color: Color(0xFF212121),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           'eki7mggd' /* Tipo de Pedido */,
                                         ),
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         elevation: 2,
-                                        borderColor: Color(0xFF757575),
+                                        borderColor:
+                                            FlutterFlowTheme.of(context).border,
                                         borderWidth: 1,
                                         borderRadius: 5,
                                         margin: EdgeInsetsDirectional.fromSTEB(
@@ -400,7 +475,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           FFLocalizations.of(context).getText(
                                             'by270219' /* Cartão de Crédido */,
                                           )
-                                        ].toList(),
+                                        ],
                                         onChanged: (val) => setState(
                                             () => dropDownPagamentoValue = val),
                                         height: 50,
@@ -408,15 +483,19 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
-                                              color: Color(0xFF212121),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           'e607k3ze' /* Condições de Pagamento */,
                                         ),
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         elevation: 2,
-                                        borderColor: Color(0xFF757575),
+                                        borderColor:
+                                            FlutterFlowTheme.of(context).border,
                                         borderWidth: 1,
                                         borderRadius: 5,
                                         margin: EdgeInsetsDirectional.fromSTEB(
@@ -427,117 +506,146 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 18),
-                                      child: TextFormField(
-                                        controller: fieldTextCobrancaController,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          'fieldTextCobrancaController',
-                                          Duration(milliseconds: 2000),
-                                          () => setState(() {}),
-                                        ),
-                                        autofocus: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            '69avcayv' /* Endereço de Cobrança */,
-                                          ),
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            'yk2blgrk' /* Endereço de Cobrança */,
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              'fr1qi70l' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 18),
-                                      child: TextFormField(
-                                        controller: fieldTextEntregaController,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          'fieldTextEntregaController',
-                                          Duration(milliseconds: 2000),
-                                          () => setState(() {}),
-                                        ),
-                                        autofocus: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            'evdkfaa3' /* Endereço de Entrega */,
-                                          ),
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            'afnmhxub' /* Endereço de Entrega */,
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 0, 8, 0),
+                                              child: TextFormField(
+                                                controller:
+                                                    fieldTextCobrancaController,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  'fieldTextCobrancaController',
+                                                  Duration(milliseconds: 2000),
+                                                  () => setState(() {}),
+                                                ),
+                                                autofocus: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '69avcayv' /* Endereço de Cobrança */,
+                                                  ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'yk2blgrk' /* Endereço de Cobrança */,
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1,
+                                              ),
                                             ),
                                           ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(8, 0, 0, 0),
+                                              child: TextFormField(
+                                                controller:
+                                                    fieldTextEntregaController,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  'fieldTextEntregaController',
+                                                  Duration(milliseconds: 2000),
+                                                  () => setState(() {}),
+                                                ),
+                                                autofocus: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'evdkfaa3' /* Endereço de Entrega */,
+                                                  ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'afnmhxub' /* Endereço de Entrega */,
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              '7imnh70b' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
+                                        ],
                                       ),
                                     ),
                                     Text(
@@ -551,11 +659,15 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 18),
                                       child: FlutterFlowDropDown(
+                                        initialOption: dropDownFreteValue ??=
+                                            FFLocalizations.of(context).getText(
+                                          '4brhhlpg' /* Grátis */,
+                                        ),
                                         options: [
                                           FFLocalizations.of(context).getText(
                                             'prdl7idb' /* Grátis */,
                                           )
-                                        ].toList(),
+                                        ],
                                         onChanged: (val) => setState(
                                             () => dropDownFreteValue = val),
                                         height: 50,
@@ -563,15 +675,19 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
-                                              color: Color(0xFF212121),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           'aae5qs89' /* Frete */,
                                         ),
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         elevation: 2,
-                                        borderColor: Color(0xFF757575),
+                                        borderColor:
+                                            FlutterFlowTheme.of(context).border,
                                         borderWidth: 1,
                                         borderRadius: 5,
                                         margin: EdgeInsetsDirectional.fromSTEB(
@@ -603,7 +719,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF757575),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -614,7 +732,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF757575),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -627,16 +747,6 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
                                         keyboardType: TextInputType.number,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              '8zfbrffv' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
                                       ),
                                     ),
                                     Padding(
@@ -665,7 +775,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF757575),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -676,7 +788,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF757575),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .border,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -694,16 +808,6 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                             .bodyText1,
                                         maxLines: 5,
                                         keyboardType: TextInputType.multiline,
-                                        validator: (val) {
-                                          if (val == null || val.isEmpty) {
-                                            return FFLocalizations.of(context)
-                                                .getText(
-                                              'lfo0nt6t' /* Field is required */,
-                                            );
-                                          }
-
-                                          return null;
-                                        },
                                       ),
                                     ),
                                   ],
@@ -918,220 +1022,233 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                         itemBuilder: (context, productIndex) {
                                           final productItem =
                                               product[productIndex];
-                                          return InkWell(
-                                            onTap: () async {
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                context: context,
-                                                builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
-                                                    child:
-                                                        AdicionarPodutosWidget(
-                                                      produto: productItem,
-                                                      order:
-                                                          widget.recordPedido,
-                                                      unity: productItem.unit,
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                              setState(
-                                                  () => FFAppState().qtd = 1);
-                                              setState(() =>
-                                                  FFAppState().desconto = 0.0);
-                                              await actions.calcDesconto(
-                                                FFAppState().desconto,
-                                                productItem.salePrice,
-                                              );
-                                            },
-                                            child: Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: 100,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    blurRadius: 3,
-                                                    color: Color(0x411D2429),
-                                                    offset: Offset(0, 1),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(16),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(8, 8, 8, 8),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8, 8, 8, 8),
+                                            child: InkWell(
+                                              onTap: () async {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 1, 1, 1),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12),
-                                                        child: Image.network(
-                                                          productItem
-                                                              .imgPrincipal,
-                                                          width: 70,
-                                                          height: 100,
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                                          MediaQuery.of(context)
+                                                              .viewInsets,
+                                                      child:
+                                                          AdicionarPodutosWidget(
+                                                        produto: productItem,
+                                                        order:
+                                                            widget.recordPedido,
+                                                        unity: productItem.unit,
                                                       ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
+                                                    );
+                                                  },
+                                                );
+                                                setState(
+                                                    () => FFAppState().qtd = 1);
+                                                setState(() => FFAppState()
+                                                    .desconto = 0.0);
+                                                await actions.calcDesconto(
+                                                  FFAppState().desconto,
+                                                  productItem.salePrice,
+                                                );
+                                              },
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                height: 100,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 3,
+                                                      color: Color(0x411D2429),
+                                                      offset: Offset(0, 1),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(16),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(8, 8, 8, 8),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    8, 8, 4, 0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              productItem
-                                                                  .productName,
+                                                                    0, 1, 1, 1),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(12),
+                                                          child: Image.network(
+                                                            productItem
+                                                                .imgPrincipal,
+                                                            width: 70,
+                                                            height: 100,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(8,
+                                                                      8, 4, 0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                productItem
+                                                                    .productName,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subtitle1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend Deca',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                    ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          4,
+                                                                          8,
+                                                                          0),
+                                                                  child:
+                                                                      AutoSizeText(
+                                                                    productItem
+                                                                        .descrition
+                                                                        .maybeHandleOverflow(
+                                                                      maxChars:
+                                                                          70,
+                                                                      replacement:
+                                                                          '…',
+                                                                    ),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Lexend Deca',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          fontSize:
+                                                                              14,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        4,
+                                                                        0,
+                                                                        0),
+                                                            child: Icon(
+                                                              Icons
+                                                                  .chevron_right_rounded,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        4,
+                                                                        8),
+                                                            child: Text(
+                                                              formatNumber(
+                                                                productItem
+                                                                    .salePrice,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .decimal,
+                                                                decimalType:
+                                                                    DecimalType
+                                                                        .commaDecimal,
+                                                                currency:
+                                                                    'R\$ ',
+                                                              ),
+                                                              textAlign:
+                                                                  TextAlign.end,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .subtitle1
+                                                                  .bodyText1
                                                                   .override(
                                                                     fontFamily:
                                                                         'Lexend Deca',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryText,
+                                                                        .textButton,
                                                                     fontSize:
-                                                                        20,
+                                                                        14,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
                                                                   ),
                                                             ),
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            4,
-                                                                            8,
-                                                                            0),
-                                                                child:
-                                                                    AutoSizeText(
-                                                                  productItem
-                                                                      .descrition
-                                                                      .maybeHandleOverflow(
-                                                                    maxChars:
-                                                                        70,
-                                                                    replacement:
-                                                                        '…',
-                                                                  ),
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Lexend Deca',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                        fontSize:
-                                                                            14,
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      4, 0, 0),
-                                                          child: Icon(
-                                                            Icons
-                                                                .chevron_right_rounded,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 24,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 4, 8),
-                                                          child: Text(
-                                                            formatNumber(
-                                                              productItem
-                                                                  .salePrice,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .decimal,
-                                                              decimalType:
-                                                                  DecimalType
-                                                                      .commaDecimal,
-                                                              currency: 'R\$ ',
-                                                            ),
-                                                            textAlign:
-                                                                TextAlign.end,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend Deca',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .textButton,
-                                                                  fontSize: 14,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -1298,13 +1415,17 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                 )}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .subtitle2,
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
                                               ),
-                                              trailing: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color: Color(0xFF303030),
-                                                size: 20,
-                                              ),
+                                              tileColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               dense: false,
                                             ),
                                           );
@@ -1425,8 +1546,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -1473,8 +1595,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -1521,8 +1644,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -1587,8 +1711,9 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                                                         .title1
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 24,
                                                           fontWeight:
                                                               FontWeight.w600,

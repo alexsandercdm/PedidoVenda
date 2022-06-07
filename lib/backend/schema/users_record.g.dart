@@ -33,6 +33,34 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.displayName;
+    if (value != null) {
+      result
+        ..add('display_name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.photoUrl;
+    if (value != null) {
+      result
+        ..add('photo_url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.createdTime;
+    if (value != null) {
+      result
+        ..add('created_time')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(DateTime)));
+    }
+    value = object.phoneNumber;
+    if (value != null) {
+      result
+        ..add('phone_number')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -63,6 +91,22 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.email = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'display_name':
+          result.displayName = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'photo_url':
+          result.photoUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'created_time':
+          result.createdTime = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime;
+          break;
+        case 'phone_number':
+          result.phoneNumber = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -82,12 +126,28 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String email;
   @override
+  final String displayName;
+  @override
+  final String photoUrl;
+  @override
+  final DateTime createdTime;
+  @override
+  final String phoneNumber;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder) updates]) =>
       (new UsersRecordBuilder()..update(updates)).build();
 
-  _$UsersRecord._({this.uid, this.email, this.reference}) : super._();
+  _$UsersRecord._(
+      {this.uid,
+      this.email,
+      this.displayName,
+      this.photoUrl,
+      this.createdTime,
+      this.phoneNumber,
+      this.reference})
+      : super._();
 
   @override
   UsersRecord rebuild(void Function(UsersRecordBuilder) updates) =>
@@ -102,13 +162,25 @@ class _$UsersRecord extends UsersRecord {
     return other is UsersRecord &&
         uid == other.uid &&
         email == other.email &&
+        displayName == other.displayName &&
+        photoUrl == other.photoUrl &&
+        createdTime == other.createdTime &&
+        phoneNumber == other.phoneNumber &&
         reference == other.reference;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, uid.hashCode), email.hashCode), reference.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, uid.hashCode), email.hashCode),
+                        displayName.hashCode),
+                    photoUrl.hashCode),
+                createdTime.hashCode),
+            phoneNumber.hashCode),
+        reference.hashCode));
   }
 
   @override
@@ -116,6 +188,10 @@ class _$UsersRecord extends UsersRecord {
     return (newBuiltValueToStringHelper('UsersRecord')
           ..add('uid', uid)
           ..add('email', email)
+          ..add('displayName', displayName)
+          ..add('photoUrl', photoUrl)
+          ..add('createdTime', createdTime)
+          ..add('phoneNumber', phoneNumber)
           ..add('reference', reference))
         .toString();
   }
@@ -132,6 +208,22 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String get email => _$this._email;
   set email(String email) => _$this._email = email;
 
+  String _displayName;
+  String get displayName => _$this._displayName;
+  set displayName(String displayName) => _$this._displayName = displayName;
+
+  String _photoUrl;
+  String get photoUrl => _$this._photoUrl;
+  set photoUrl(String photoUrl) => _$this._photoUrl = photoUrl;
+
+  DateTime _createdTime;
+  DateTime get createdTime => _$this._createdTime;
+  set createdTime(DateTime createdTime) => _$this._createdTime = createdTime;
+
+  String _phoneNumber;
+  String get phoneNumber => _$this._phoneNumber;
+  set phoneNumber(String phoneNumber) => _$this._phoneNumber = phoneNumber;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -146,6 +238,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
     if ($v != null) {
       _uid = $v.uid;
       _email = $v.email;
+      _displayName = $v.displayName;
+      _photoUrl = $v.photoUrl;
+      _createdTime = $v.createdTime;
+      _phoneNumber = $v.phoneNumber;
       _reference = $v.reference;
       _$v = null;
     }
@@ -166,7 +262,14 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   @override
   _$UsersRecord build() {
     final _$result = _$v ??
-        new _$UsersRecord._(uid: uid, email: email, reference: reference);
+        new _$UsersRecord._(
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoUrl: photoUrl,
+            createdTime: createdTime,
+            phoneNumber: phoneNumber,
+            reference: reference);
     replace(_$result);
     return _$result;
   }

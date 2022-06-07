@@ -99,7 +99,7 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -116,7 +116,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
           },
         ),
         title: Text(
-          'Cadasto de Produtos',
+          FFLocalizations.of(context).getText(
+            'kg0u7giz' /* Cadasto de Produtos */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).textButton,
@@ -127,6 +129,7 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
         centerTitle: false,
         elevation: 3,
       ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -235,7 +238,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -253,7 +258,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -305,7 +312,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -323,7 +332,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -436,8 +447,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
-                                                                color: Color(
-                                                                    0xFF212121),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                       hintText:
                                                           FFLocalizations.of(
@@ -445,12 +457,17 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                               .getText(
                                                         'hfa99iyq' /* Seleciona a Unidade */,
                                                       ),
-                                                      fillColor: Colors.white,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBackground,
                                                       elevation: 2,
                                                       borderColor:
-                                                          Color(0xFF757575),
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
                                                       borderWidth: 1,
-                                                      borderRadius: 0,
+                                                      borderRadius: 5,
                                                       margin:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
@@ -554,8 +571,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
-                                                                color: Color(
-                                                                    0xFF212121),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                       hintText:
                                                           FFLocalizations.of(
@@ -563,12 +581,17 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                               .getText(
                                                         '6pgtklg6' /* Selecione a Categoria */,
                                                       ),
-                                                      fillColor: Colors.white,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBackground,
                                                       elevation: 2,
                                                       borderColor:
-                                                          Color(0xFF757575),
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
                                                       borderWidth: 1,
-                                                      borderRadius: 0,
+                                                      borderRadius: 5,
                                                       margin:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
@@ -671,8 +694,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
-                                                                color: Color(
-                                                                    0xFF212121),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                       hintText:
                                                           FFLocalizations.of(
@@ -680,12 +704,17 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                               .getText(
                                                         'x0x7moi4' /* Selecione a Marca */,
                                                       ),
-                                                      fillColor: Colors.white,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBackground,
                                                       elevation: 2,
                                                       borderColor:
-                                                          Color(0xFF757575),
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .border,
                                                       borderWidth: 1,
-                                                      borderRadius: 0,
+                                                      borderRadius: 5,
                                                       margin:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
@@ -716,7 +745,7 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         .getText(
                                                       '99z6tv74' /* Matéria Prima */,
                                                     )
-                                                  ].toList(),
+                                                  ],
                                                   onChanged: (val) => setState(() =>
                                                       dropDownTipoProdutoValue =
                                                           val),
@@ -727,19 +756,26 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         color:
-                                                            Color(0xFF212121),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                       ),
                                                   hintText: FFLocalizations.of(
                                                           context)
                                                       .getText(
                                                     'r4hdj607' /* Selectione o Tipo de Produto */,
                                                   ),
-                                                  fillColor: Colors.white,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
                                                   elevation: 2,
                                                   borderColor:
-                                                      Color(0xFF757575),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .border,
                                                   borderWidth: 1,
-                                                  borderRadius: 0,
+                                                  borderRadius: 5,
                                                   margin: EdgeInsetsDirectional
                                                       .fromSTEB(12, 4, 12, 4),
                                                   hidesUnderline: true,
@@ -799,7 +835,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -817,7 +855,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -871,7 +911,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -889,7 +931,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -965,7 +1009,7 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         .getText(
                                                       'a7ffj25j' /* 8 - Nacional, mercadoria ou be... */,
                                                     )
-                                                  ].toList(),
+                                                  ],
                                                   onChanged: (val) => setState(
                                                       () =>
                                                           dropDownOrigemValue =
@@ -977,19 +1021,26 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         color:
-                                                            Color(0xFF212121),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                       ),
                                                   hintText: FFLocalizations.of(
                                                           context)
                                                       .getText(
                                                     'tq79fzt7' /* Seleciona a Origem da Mercador... */,
                                                   ),
-                                                  fillColor: Colors.white,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
                                                   elevation: 2,
                                                   borderColor:
-                                                      Color(0xFF757575),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .border,
                                                   borderWidth: 1,
-                                                  borderRadius: 0,
+                                                  borderRadius: 5,
                                                   margin: EdgeInsetsDirectional
                                                       .fromSTEB(12, 4, 12, 4),
                                                   hidesUnderline: true,
@@ -1028,7 +1079,7 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         .getText(
                                                       'mzdjc05x' /* 07 */,
                                                     )
-                                                  ].toList(),
+                                                  ],
                                                   onChanged: (val) => setState(
                                                       () =>
                                                           dropDownExceIPIValue =
@@ -1040,19 +1091,26 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         color:
-                                                            Color(0xFF212121),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                       ),
                                                   hintText: FFLocalizations.of(
                                                           context)
                                                       .getText(
                                                     'bt839ynd' /* Selecione Exceção Tabela IPI */,
                                                   ),
-                                                  fillColor: Colors.white,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
                                                   elevation: 2,
                                                   borderColor:
-                                                      Color(0xFF757575),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .border,
                                                   borderWidth: 1,
-                                                  borderRadius: 0,
+                                                  borderRadius: 5,
                                                   margin: EdgeInsetsDirectional
                                                       .fromSTEB(12, 4, 12, 4),
                                                   hidesUnderline: true,
@@ -1090,7 +1148,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1108,7 +1168,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1160,7 +1222,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1178,7 +1242,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1232,7 +1298,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1250,7 +1318,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1303,7 +1373,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1321,7 +1393,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1373,7 +1447,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1391,7 +1467,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1443,7 +1521,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1461,7 +1541,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1513,7 +1595,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1531,7 +1615,9 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFF757575),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .border,
                                                         width: 1,
                                                       ),
                                                       borderRadius:
@@ -1896,7 +1982,7 @@ class _ProdutosCadastrosWidgetState extends State<ProdutosCadastrosWidget>
                                 decoration: BoxDecoration(),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      9, 0, 9, 0),
+                                      9, 0, 9, 18),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
