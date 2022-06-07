@@ -213,6 +213,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                         },
                       ),
                     ),
+                    // ----------- começa aqui o campo quantidade a ser refatoado ----------
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                       child: Container(
@@ -333,6 +334,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                         ),
                       ),
                     ),
+                    // --------------------- Fim do campo que altera a quantidade -----------------
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                       child: Container(

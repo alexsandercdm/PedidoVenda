@@ -6,6 +6,8 @@ import 'index.dart'; // Imports other custom widgets
 import '../actions/index.dart'; // Imports custom actions
 import '../../flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
+import '../actions/index.dart' as actions;
+import 'package:my_first_project/app_state.dart';
 
 // Begin custom widget code
 class FieldCounter extends StatefulWidget {
@@ -23,22 +25,32 @@ class FieldCounter extends StatefulWidget {
 }
 
 class _FieldCounterState extends State<FieldCounter> {
-  var _counter = 0;
+  var _counter = FFAppState().qtd ;
+  
 
   final TextEditingController _controller =
-      TextEditingController(text: 0.toString());
+      TextEditingController(text: 1.toString());
 
   void increment() {
     _counter++;
+    setState(() {
+      FFAppState().qtd = _counter;
+    });
     _controller.text = _counter.toString();
   }
 
   void decrement() {
     _counter--;
+    setState(() {
+      FFAppState().qtd = _counter;
+    });
     _controller.text = _counter.toString();
   }
 
   void updateChange() {
+    setState(() {
+      FFAppState().qtd = _counter;
+    });
     _counter = int.parse(_controller.text);
   }
 
