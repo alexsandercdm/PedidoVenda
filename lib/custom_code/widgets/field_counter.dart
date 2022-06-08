@@ -45,6 +45,7 @@ class _FieldCounterState extends State<FieldCounter> {
     );
     setState(() => FFAppState().desconto =
         functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd));
+    setState(() {});
   }
 
   void decrement() {
@@ -59,6 +60,7 @@ class _FieldCounterState extends State<FieldCounter> {
     );
     setState(() => FFAppState().desconto =
         functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd));
+    setState(() {});
   }
 
   void updateChange() {
@@ -73,7 +75,7 @@ class _FieldCounterState extends State<FieldCounter> {
     );
     setState(() => FFAppState().desconto =
         functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd));
-    
+    setState(() {});
   }
 
   @override

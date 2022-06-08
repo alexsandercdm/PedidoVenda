@@ -31,6 +31,7 @@ class AdicionarPodutosWidget extends StatefulWidget {
 
 class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
   TextEditingController textController1;
+  double valorCalcDesconto2;
   double valorCalcDesconto1;
   TextEditingController textController2;
   double valorCalcDesconto;
@@ -282,7 +283,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                   controller: textController1,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     'textController1',
-                                    Duration(milliseconds: 2000),
+                                    Duration(milliseconds: 100),
                                     () => setState(() {}),
                                   ),
                                   onFieldSubmitted: (_) async {
