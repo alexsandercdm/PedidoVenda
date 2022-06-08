@@ -46,6 +46,10 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
     ));
   }
 
+  void updateChanged() {
+    print(1);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -281,11 +285,7 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                 decoration: BoxDecoration(),
                                 child: TextFormField(
                                   controller: textController1,
-                                  onChanged: (_) => EasyDebounce.debounce(
-                                    'textController1',
-                                    Duration(milliseconds: 100),
-                                    () => setState(() {}),
-                                  ),
+                                  onChanged: (_) => updateChanged(),
                                   onFieldSubmitted: (_) async {
                                     setState(() => FFAppState().qtd =
                                         int.parse(textController1.text));
@@ -417,6 +417,8 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                     );
                                     setState(() => FFAppState().desconto =
                                         valorCalcDesconto);
+                                    setState(() => FFAppState().descontoField =
+                                        double.parse(textController2.text));
 
                                     setState(() {});
                                   },

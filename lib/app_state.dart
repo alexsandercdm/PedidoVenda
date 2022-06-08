@@ -27,6 +27,7 @@ class FFAppState {
   int qtd = 1;
 
   double desconto = 0;
+  double descontoField = 0;
 
   List<int> charts = [0, 1, 2, 4, 3, 6, 3, 8, 9, 5];
 
