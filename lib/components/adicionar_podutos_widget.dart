@@ -46,8 +46,27 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
     ));
   }
 
-  void updateChanged() {
-    print(1);
+  void increment() {
+    setState(() => FFAppState().qtd++);
+    textController1.text = FFAppState().qtd.toString();
+    updateChanged();
+  }
+
+  void decrement() {
+    setState(() => FFAppState().qtd--);
+    textController1.text = FFAppState().qtd.toString();
+    updateChanged();
+  }
+
+  void updateChanged() async {
+    setState(() => FFAppState().qtd = int.parse(textController1.text));
+    valorCalcDesconto1 = await actions.calcDesconto(
+      double.parse(textController2.text),
+      functions.calcPrecoLiquido(widget.produto.salePrice, FFAppState().qtd),
+    );
+    setState(() => FFAppState().desconto = valorCalcDesconto1);
+
+    setState(() {});
   }
 
   @override
@@ -279,6 +298,10 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                   ),
                                 ),
                               ),
+                              IconButton(
+                                onPressed: decrement,
+                                icon: Icon(Icons.remove),
+                              ),
                               Container(
                                 width: 120,
                                 height: 100,
@@ -330,6 +353,9 @@ class _AdicionarPodutosWidgetState extends State<AdicionarPodutosWidget> {
                                   keyboardType: TextInputType.number,
                                 ),
                               ),
+                              IconButton(
+                                  onPressed: increment,
+                                  icon: Icon(Icons.add)),
                             ],
                           ),
                         ),
